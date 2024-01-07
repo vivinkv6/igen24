@@ -11,6 +11,13 @@ body {
   background-color: var(--bg);
   color: var(--primary);
 }
+a{
+  text-decoration: none;
+  color: var(--primary);
+}
+a:hover{
+  color: var(--primary);
+}
 
 /* navbar */
 
@@ -152,12 +159,11 @@ h1 > span {
     font-size: 30px;
   }
   .links {
+    width: max-content;
     flex-direction: column;
     margin-left: 10px;
   }
-  li:hover {
-    width: 100px;
-  }
+  
   .parent {
     filter: brightness(0.4);
   }
