@@ -14,7 +14,7 @@
   </head>
   <body>
     <div class="container">
-      <div class="row card-container mt-5 mb-5">
+      <div class="row card-container mt-5 " style="margin-bottom: 100px;">
         <% for( let i = 0; i < posters.length; i++ ) { %>
 
         <div
@@ -22,17 +22,37 @@
           data-aos="flip-right"
           data-aos-duration="1000"
         >
-          <a href="<%= posters[i].image %>" target="_blank">
-            <center>
+          <center>
+            <a href="<%= posters[i].image %>" target="_blank">
               <img src="<%= posters[i].image %>" class="rounded" alt="" />
-            </center>
-          </a>
-
-          <!-- <div style="width:75%; display:  flex;">
-        <button class="btn-sm me-3  mt-3 text-light " style="background-color: rgb(153, 227, 42);border: none;">Online</button>
-        <button class="btn-sm mt-3 ">Spot</button>
-      </div> -->
+            </a>
+            <br />
+            <a href="/events/<%= posters[i].name %>/registration" data-aos="zoom-in" class="btn mt-3">Register Now</a>
+          </center>
         </div>
+
+        <!-- <div
+          class="col-md-6 col-lg-4 card-item"
+          data-aos="flip-right"
+          data-aos-duration="1000"
+        >
+          <center>
+            <a
+              href="<%#= posters[i].image %>"
+              style="position: relative"
+              target="_blank"
+            >
+              <img
+                src="<%#= posters[i].image %>"
+                class="rounded closed-img"
+                alt=""
+              />
+              <h1 class="text-light closed-content" style="">CLOSED</h1>
+            </a>
+            <br />
+            <button class="btn closed-btn mt-3">Register Now</button>
+          </center>
+        </div> -->
 
         <% } %>
       </div>

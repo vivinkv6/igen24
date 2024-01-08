@@ -1,14 +1,10 @@
 const { DataTypes } = require("sequelize");
 const sequelizeConfig = require("../../../config/sequelize.config");
 
-const codex = sequelizeConfig.define("onlinecodex", {
+const reconcile= sequelizeConfig.define("spotReconcile", {
   id: {
     type: DataTypes.STRING,
     primaryKey: true,
-    allowNull: false,
-  },
-  email:{
-    type: DataTypes.STRING,
     allowNull: false,
   },
   name: {
@@ -23,15 +19,7 @@ const codex = sequelizeConfig.define("onlinecodex", {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  transactionid: {
-    type: DataTypes.STRING,
-    allowNull:false,
-  },
-  payment: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
 });
 
 
-module.exports=codex
+module.exports=reconcile;
