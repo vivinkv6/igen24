@@ -45,10 +45,14 @@
           <b>Event: </b><%= event %> <br />
           <br />
           <b>Mode:</b> <%= mode %> <br />
+          <% if (transaction) { %>
+            <br />
+            <b>TransactionID:</b> <%= transaction %> <br />
+          <% } %>
           <br />
           <b>Chess Number: </b> <%= id %> <br />
         </h3>
-        <p>
+        <p style="color: rgb(243, 70, 70);">
           ! Please capture a screenshot and it will be submitted to the
           registration team for verification.
         </p>

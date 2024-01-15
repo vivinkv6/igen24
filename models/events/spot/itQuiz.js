@@ -7,17 +7,21 @@ const itQuiz = sequelizeConfig.define("spotquiz", {
     primaryKey: true,
     allowNull: false,
   },
+  email: {
+    type: DataTypes.ARRAY(DataTypes.STRING) ,
+    allowNull: true,
+  },
   name: {
-    type: DataTypes.STRING,
-    allowNull: false,
+    type: DataTypes.ARRAY(DataTypes.STRING),
+    allowNull: true,
   },
   college: {
     type: DataTypes.STRING,
     allowNull: false,
   },
   department: {
-    type: DataTypes.STRING,
-    allowNull: false,
+    type: DataTypes.ARRAY(DataTypes.STRING),
+    allowNull: true,
   },
 });
 

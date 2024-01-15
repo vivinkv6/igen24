@@ -7,8 +7,12 @@ const band= sequelizeConfig.define("spotBand", {
     primaryKey: true,
     allowNull: false,
   },
+  email:{
+    type: DataTypes.ARRAY(DataTypes.STRING) ,
+    allowNull: false,
+  },
   name: {
-    type: DataTypes.STRING,
+    type: DataTypes.ARRAY(DataTypes.STRING) ,
     allowNull: false,
   },
   college: {
@@ -16,7 +20,7 @@ const band= sequelizeConfig.define("spotBand", {
     allowNull: false,
   },
   department: {
-    type: DataTypes.STRING,
+    type: DataTypes.ARRAY(DataTypes.STRING),
     allowNull: false,
   },
 

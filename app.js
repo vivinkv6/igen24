@@ -9,6 +9,7 @@ var sequelizeConfig = require("./config/sequelize.config");
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var adminRouter=require('./routes/admin/adminRoutes');
+const itQuiz = require("./models/events/spot/itQuiz");
 
 var app = express();
 
@@ -48,7 +49,12 @@ app.use(function (err, req, res, next) {
     console.log(
       "Connection to the database has been established successfully."
     );
-
+  
+    // sequelizeConfig.drop().then(()=>{
+    //   console.log("Delete all table");
+    // }).catch((err)=>{
+    //   console.log("Error in dropping table: ",err);
+    // })
     // Sync the model with the database
     sequelizeConfig
       .sync()
@@ -58,6 +64,7 @@ app.use(function (err, req, res, next) {
       .catch((error) => {
         console.error("Error creating table:", error);
       });
+      
 
     console.log("Model synchronized with the database.");
   } catch (error) {
