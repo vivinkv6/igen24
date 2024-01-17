@@ -22,7 +22,7 @@
     />
     <link rel="stylesheet" href="/stylesheets/events/codex/online.css" />
 
-    <title>Codex Online Registration</title>
+    <title>Gaming Online Registration</title>
   </head>
   <body>
     <div
@@ -31,17 +31,12 @@
       data-aos-duration="2000"
     >
       <div class="registration-header">
-        <h1 class="registration-title">Codex Online Registration</h1>
+        <h1 class="registration-title">Gaming Online Registration</h1>
         <!-- <p class="registration-description">
           Please fill out the form to register
         </p> -->
       </div>
-      <form
-        class="registration-card"
-        action="online"
-        method="post"
-        enctype="multipart/form-data"
-      >
+      <form class="registration-card" action="online" method="post" enctype="multipart/form-data">
         <!-- <div class="registration-section">
           <h2 class="registration-section-title">Personal Information</h2>
         </div> -->
@@ -67,8 +62,9 @@
               placeholder="john@example.com"
               required
             />
+           
           </div>
-
+          
           <div class="form-group">
             <label for="role" class="form-label">College</label>
             <input
@@ -90,12 +86,12 @@
               required
             />
           </div>
-
+        
           <div class="form-group">
             <label for="place" class="form-label">Online Payment QRCode</label>
             <input
               type="image"
-              style="height: 400px; object-fit: contain"
+              style="height: 400px;object-fit: contain; "
               src="https://qrcode.shanuthewebdev.in/images/logo.png"
               class="form-input"
               required
@@ -113,9 +109,7 @@
             />
           </div>
           <div class="form-group">
-            <label for="id-proof" class="form-label"
-              >Upload Payment Screenshot
-            </label>
+            <label for="id-proof" class="form-label">Upload Payment Screenshot </label>
             <input
               type="file"
               height="300"

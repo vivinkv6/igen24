@@ -36,6 +36,7 @@
         <h1>Registration Completed Successfully</h1>
         <br />
         <h3>
+          <b>Chess Number: </b> <%= id %> <br /><br />
           <b>Name: </b><%= name %> <br />
           <br />
           <b>College: </b><%= college %> <br />
@@ -44,13 +45,13 @@
           <br />
           <b>Event: </b><%= event %> <br />
           <br />
-          <b>Mode:</b> <%= mode %> <br />
-          <% if (transaction) { %>
+          <b>Payment:</b> <%= mode %> <br />
+          <% if (online) { %>
             <br />
             <b>TransactionID:</b> <%= transaction %> <br />
           <% } %>
           <br />
-          <b>Chess Number: </b> <%= id %> <br />
+         
         </h3>
         <p style="color: rgb(243, 70, 70);">
           ! Please capture a screenshot and it will be submitted to the
