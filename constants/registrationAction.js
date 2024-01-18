@@ -1,0 +1,70 @@
+const registrationAction = [
+    {
+        id:1,
+        name:"Codex",
+        online:true,
+        offline:false
+    },
+    {
+        id:2,
+        name:"Webcast",
+        online:true,
+        offline:false
+    },
+    {
+        id:3,
+        name:"Choreography",
+        online:false,
+        offline:false
+    },
+    {
+        id:4,
+        name:"Photography",
+        online:true,
+        offline:true
+    },
+    {
+        id:5,
+        name:"Reconcile",
+        online:true,
+        offline:false
+    },
+    {
+        id:6,
+        name:"Crime Investigation",
+        online:true,
+        offline:false
+    },
+    {
+        id:7,
+        name:"Gaming",
+        online:true,
+        offline:false
+    },
+    {
+        id:8,
+        name:"Football",
+        online:true,
+        offline:false
+    },
+    {
+        id:9,
+        name:"IT Quiz",
+        online:true,
+        offline:false
+    },
+    {
+        id:10,
+        name:"Cipher",
+        online:true,
+        offline:false
+    },
+    {
+        id:11,
+        name:"Band",
+        online:true,
+        offline:false
+    }
+];
+
+module.exports=registrationAction

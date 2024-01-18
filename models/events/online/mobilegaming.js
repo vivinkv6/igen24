@@ -11,6 +11,10 @@ const mobileGaming= sequelizeConfig.define("onlinegaming", {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  email:{
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
   college: {
     type: DataTypes.STRING,
     allowNull: false,

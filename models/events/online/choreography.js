@@ -11,6 +11,10 @@ const choreography = sequelizeConfig.define("onlinechoreography", {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  email:{
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
   college: {
     type: DataTypes.STRING,
     allowNull: false,

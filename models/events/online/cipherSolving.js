@@ -10,6 +10,9 @@ const cipher = sequelizeConfig.define("onlinecipher", {
   name: {
     type: DataTypes.STRING,
     allowNull: false,
+  }, email:{
+    type: DataTypes.STRING,
+    allowNull: false,
   },
   college: {
     type: DataTypes.STRING,

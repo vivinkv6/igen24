@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik+Glitch&family=Russo+One&family=Saira+Stencil+One&family=Ubuntu+Condensed&family=Unica+One&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- AOS  -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/stylesheets/admin/dashboard.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css"
+    />
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Saira+Stencil+One&display=swap');
+      </style>
+
+    <title>Admin Dashboard</title>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <!-- Sidebar -->
+        <div class="sidebar col-md-3 shadow-lg">
+          <h2 class="mb-4 text-secondary" style="font-family: 'Saira Stencil One', sans-serif;">ADMIN DASHBOARD</h2>
+          <!-- <a href="#" class="list-group-item list-group-item-action">Profile</a> -->
+          <a href="/admin/dashboard/community" class="list-group-item-action text-decoration-none"
+                ><i
+                  class="bi bi-building fs-3 me-3"
+                  style="vertical-align: middle"
+                ></i
+                >Registration</a
+              >
+          <a href="/admin/dashboard/events" class=" list-group-item-action"
+            ><i
+              class="bi bi-person fs-3 me-3"
+              style="vertical-align: middle"
+            ></i
+            >Events</a
+          >
+         
+          <a href="/admin/logout" class="list-group-item-action"
+            ><i
+              class="bi bi-box-arrow-left fs-3 me-3"
+              style="vertical-align: middle"
+            ></i
+            >Logout</a
+          >
+        </div>
+        <nav
+          class="nav2 navbar navbar-expand-lg bg bg-light shadow-sm bg-body-tertiary"
+        >
+          <div class="container-fluid">
+            <h5 class="text-secondary" style="font-family: 'Saira Stencil One', sans-serif;">ADMIN DASHBOARD</h5>
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarNavDropdown"
+              aria-controls="navbarNavDropdown"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="bi bi-list text-dark fs-1"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav mt-3">
+                <a href="/admin/dashboard/community" class="list-group-item-action text-decoration-none"
+                ><i
+                  class="bi bi-building fs-3 me-3"
+                  style="vertical-align: middle"
+                ></i
+                >Registration</a
+              >
+                <a href="/admin/dashboard/events" class="list-group-item-action text-decoration-none"
+                  ><i
+                    class="bi bi-person fs-3 me-3"
+                    style="vertical-align: middle;"
+                  ></i
+                  >Events</a
+                >
+              
+              
+                <a href="/admin/logout" class=" list-group-item-action text-decoration-none"
+                  ><i
+                    class="bi bi-box-arrow-left fs-3 me-3"
+                    style="vertical-align: middle"
+                  ></i
+                  >Logout</a
+                >
+              </ul>
+            </div>
+          </div>
+        </nav>
+
+        <!-- Content -->
+        <div class="content col-md-9 table-responsive">
+          <!-- Table -->
+          <table class="table table-bordered caption-top">
+           
+
+           
+              
+              <caption>
+                Registraton Action
+              </caption>
+              <thead class="thead-dark">
+                <tr>
+                  <th class="text-dark">SlNo.</th>
+                  <th class="text-dark">Event</th>
+                  <th class="text-dark">Online</th>
+                  <th class="text-dark">Spot</th>
+                </tr>
+              </thead>
+  
+              <tbody>
+                <% for( let i = 0; i < events.length; i++ ) { %>
+                
+                
+                <tr>
+                  <td><%= events[i].id %></td>
+                  <td><%= events[i].name %></td>
+                  <td>
+                    <% if (events[i].online) { %>
+                        <button class="btn btn-success">Open</button>
+                    <% }else{ %>
+                        <button class="btn btn-danger">Closed</button>
+                        <% } %>
+                  
+                
+                </td>
+                  <td>
+                    
+                    <% if (events[i].offline) { %>
+                        <button class="btn btn-success">Open</button>
+                    <% }else{ %>
+                        <button class="btn btn-danger">Closed</button>
+                        <% } %>
+                  </td>
+                </tr>
+                
+                
+                <% } %>
+              
+                <!-- Add more rows as needed -->
+              </tbody>
+              <%# } %>
+
+           
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

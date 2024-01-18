@@ -11,6 +11,10 @@ const crimeInvestigation = sequelizeConfig.define("onlineci", {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  email:{
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
   college: {
     type: DataTypes.STRING,
     allowNull: false,

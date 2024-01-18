@@ -7,6 +7,10 @@ const photography= sequelizeConfig.define("spotPhotographpy", {
     primaryKey: true,
     allowNull: false,
   },
+  email:{
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
   name: {
     type: DataTypes.STRING,
     allowNull: false,

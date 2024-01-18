@@ -1,10 +1,47 @@
 const express = require("express");
+
 const adminlogin = require("../../models/users/admin");
+
+//event models
+const spotCodex = require("../../models/events/spot/codex");
+const onlineCodex = require("../../models/events/online/codex");
+
+const spotWeb = require("../../models/events/spot/webcast");
+const onlineWeb = require("../../models/events/online/webcast");
+
+const spotCipher = require("../../models/events/spot/cipherSolving");
+const onlineCipher = require("../../models/events/online/cipherSolving");
+
+const spotphotography = require("../../models/events/spot/photography");
+const onlinephotography = require("../../models/events/online/photography");
+
+const spotcrime = require("../../models/events/spot/crimeInvestigation");
+const onlinecrime = require("../../models/events/online/crimeInvestigation");
+
+const spotquiz = require("../../models/events/spot/itQuiz");
+const onlinequiz = require("../../models/events/online/itQuiz");
+
+const spotgaming = require("../../models/events/spot/mobilegaming");
+const onlinegaming = require("../../models/events/online/mobilegaming");
+
+const spotfootball = require("../../models/events/spot/slipperyFootball");
+const onlinefootball = require("../../models/events/online/slipperyFootball");
+
+const spotreconcile = require("../../models/events/spot/reconcile");
+const onlinereconcile = require("../../models/events/online/reconcile");
+
+const spotband = require("../../models/events/spot/musicBand");
+const onlineband = require("../../models/events/online/musicBand");
+
+const spotchoreography = require("../../models/events/spot/choreography");
+const onlinechoreography = require("../../models/events/online/choreography");
+
 const router = express.Router();
 const bycrypt = require("bcrypt");
-const jwt=require('jsonwebtoken');
+const jwt = require("jsonwebtoken");
 const usernameExtractor = require("../../utils/usernameExtractor");
-const cookieAuth=require('../../utils/auth');
+const cookieAuth = require("../../utils/auth");
+const registrationAction = require("../../constants/registrationAction");
 
 router.get("/login", async (req, res) => {
   /* This code block is checking if there is already an existing admin account in the database. */
@@ -15,7 +52,7 @@ router.get("/login", async (req, res) => {
 
     if (findId) {
       // res.redirect(`/admin/dashboard`);
-      res.json({ msg: "Admin Dashboard" });
+      res.redirect("/admin/dashboard");
     } else {
       res.redirect(`/admin/login`);
     }
@@ -67,7 +104,6 @@ router.post("/login", async (req, res) => {
           /* This code block is checking if the password entered by the user matches the hashed password
            stored in the database. */
           if (data) {
-            
             const token = cookieAuth(hashPassword.dataValues.id);
             res.cookie("admin", token, {
               expires: new Date(Date.now() + 172800 * 1000),
@@ -75,7 +111,7 @@ router.post("/login", async (req, res) => {
               httpOnly: true,
             });
             //   res.redirect("/admin/dashboard");
-            res.json({ msg: "Admin Dashboard" });
+            res.redirect("/admin/dashboard");
           } else {
             res.render("../views/admin/login", {
               emailExist: true,
@@ -143,14 +179,218 @@ router.post("/signup", async (req, res) => {
               httpOnly: true,
             });
             //   res.redirect("/admin/dashboard");
-            res.json({ msg: "Admin Dashboard" });
+            res.redirect("/admin/dashboard");
           });
       }
     });
   }
 });
 
+router.get("/dashboard", async (req, res) => {
+  if (req.cookies.admin) {
+    const adminId = jwt.verify(req.cookies.admin, process.env.JWT_SECRET_TOKEN);
+    const findAdmin = await adminlogin.findByPk(adminId);
+    if (findAdmin) {
+      res.render("admin/dashboard", { events: registrationAction });
+    } else {
+      res.clearCookie("admin");
+      res.redirect("/admin/login");
+    }
+  } else {
+    res.redirect("/admin/login");
+  }
+});
 
+router.get("/dashboard/events", async (req, res) => {
+  const { category, event } = req.query;
 
+  if (req.cookies.admin) {
+    const adminId = jwt.verify(req.cookies.admin, process.env.JWT_SECRET_TOKEN);
+    const findAdmin = await adminlogin.findByPk(adminId);
+    if (findAdmin) {
+      if (category == "spot" && event == "codex") {
+        const spot = await spotCodex.findAll({});
+        res.render("admin/codex", {
+          event: spot,
+          name: "Spot Registration",
+          event_name: "Codex",
+        });
+      } else if (category == "online" && event == "codex") {
+        const online = await onlineCodex.findAll({});
+        res.render("admin/codex", {
+          event: online,
+          name: "Online Registration",
+          event_name: "Codex",
+        });
+      } else if (category == "spot" && event == "webcast") {
+        const online = await spotWeb.findAll({});
+        res.render("admin/codex", {
+          event: online,
+          name: "Spot Registration",
+          event_name: "Webcast",
+        });
+      } else if (category == "online" && event == "webcast") {
+        const online = await onlineWeb.findAll({});
+        res.render("admin/codex", {
+          event: online,
+          name: "Online Registration",
+          event_name: "Webcast",
+        });
+      } else if (category == "spot" && event == "band") {
+        const online = await spotband.findAll({});
+        res.render("admin/codex", {
+          event: online,
+          name: "Spot Registration",
+          event_name: "Music Band",
+        });
+      } else if (category == "online" && event == "band") {
+        const online = await onlineband.findAll({});
+        res.render("admin/codex", {
+          event: online,
+          name: "Online Registration",
+          event_name: "Music Band",
+        });
+      } else if (category == "spot" && event == "choreography") {
+        const online = await spotchoreography.findAll({});
+        res.render("admin/codex", {
+          event: online,
+          name: "Spot Registration",
+          event_name: "Choreography",
+        });
+      } else if (category == "online" && event == "choreography") {
+        const online = await onlinechoreography.findAll({});
+        res.render("admin/codex", {
+          event: online,
+          name: "Online Registration",
+          event_name: "Choreography",
+        });
+      } else if (category == "spot" && event == "cipher") {
+        const online = await spotCipher.findAll({});
+        res.render("admin/codex", {
+          event: online,
+          name: "Spot Registration",
+          event_name: "Crack The Cipher",
+        });
+      } else if (category == "online" && event == "cipher") {
+        const online = await onlineCipher.findAll({});
+        res.render("admin/codex", {
+          event: online,
+          name: "Online Registration",
+          event_name: "Crack The Cipher",
+        });
+      } else if (category == "spot" && event == "crime") {
+        const online = await spotcrime.findAll({});
+        res.render("admin/codex", {
+          event: online,
+          name: "Spot Registration",
+          event_name: "Crime Investigation",
+        });
+      } else if (category == "online" && event == "crime") {
+        const online = await onlinecrime.findAll({});
+        res.render("admin/codex", {
+          event: online,
+          name: "Online Registration",
+          event_name: "Crime Investigation",
+        });
+      } else if (category == "online" && event == "football") {
+        const online = await onlinefootball.findAll({});
+        res.render("admin/codex", {
+          event: online,
+          name: "Online Registration",
+          event_name: "Slippery Football",
+        });
+      } else if (category == "spot" && event == "football") {
+        const online = await spotfootball.findAll({});
+        res.render("admin/codex", {
+          event: online,
+          name: "Spot Registration",
+          event_name: "Slippery Football",
+        });
+      } else if (category == "spot" && event == "crime") {
+        const online = await spotcrime.findAll({});
+        res.render("admin/codex", {
+          event: online,
+          name: "Spot Registration",
+          event_name: "Crime Investigation",
+        });
+      } else if (category == "online" && event == "crime") {
+        const online = await onlinecrime.findAll({});
+        res.render("admin/codex", {
+          event: online,
+          name: "Online Registration",
+          event_name: "Crime Investigation",
+        });
+      } else if (category == "spot" && event == "gaming") {
+        const online = await spotgaming.findAll({});
+        res.render("admin/codex", {
+          event: online,
+          name: "Spot Registration",
+          event_name: "Video Gaming",
+        });
+      } else if (category == "online" && event == "gaming") {
+        const online = await onlinegaming.findAll({});
+        res.render("admin/codex", {
+          event: online,
+          name: "Online Registration",
+          event_name: "Video Gaming",
+        });
+      } else if (category == "spot" && event == "itquiz") {
+        const online = await spotquiz.findAll({});
+        res.render("admin/codex", {
+          event: online,
+          name: "Spot Registration",
+          event_name: "IT Quiz",
+        });
+      } else if (category == "online" && event == "itquiz") {
+        const online = await onlinequiz.findAll({});
+        res.render("admin/codex", {
+          event: online,
+          name: "Online Registration",
+          event_name: "IT Quiz",
+        });
+      } else if (category == "spot" && event == "reconcile") {
+        const online = await spotreconcile.findAll({});
+        res.render("admin/codex", {
+          event: online,
+          name: "Spot Registration",
+          event_name: "Reconicle",
+        });
+      } else if (category == "online" && event == "reconcile") {
+        const online = await onlinereconcile.findAll({});
+        res.render("admin/codex", {
+          event: online,
+          name: "Online Registration",
+          event_name: "Reconcile",
+        });
+      } else if (category == undefined && event == undefined) {
+        const spot = await spotCodex.findAll({});
+        res.render("admin/codex", {
+          event: spot,
+          name: "Spot Registration",
+          event_name: "Codex",
+        });
+      } else {
+        const spot = await spotCodex.findAll({});
+        res.render("admin/codex", {
+          event: spot,
+          name: "Spot Registration",
+          event_name: "Codex",
+        });
+      }
+    } else {
+      res.clearCookie("admin");
+      res.redirect("/admin/login");
+    }
+  } else {
+    res.redirect("/admin/login");
+  }
+});
 
-module.exports=router
+//admin logout
+
+router.get("/logout", (req, res) => {
+  res.clearCookie("admin");
+  res.redirect("/admin/login");
+});
+
+module.exports = router;
