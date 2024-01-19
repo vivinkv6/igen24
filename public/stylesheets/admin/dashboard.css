@@ -75,10 +75,11 @@ th {
 
 .filter-container {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   flex-wrap: wrap;
   margin-bottom: 20px;
+  column-gap: 10px;
 }
 
 .filter-category {
@@ -98,5 +99,12 @@ select {
   }
   .nav2 {
     display: flex;
+  }
+  .filter-container{
+    flex-direction: column;
+    row-gap: 10px;
+  }
+  .filter-btn{
+    width: 50%;
   }
 }

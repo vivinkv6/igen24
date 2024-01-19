@@ -26,8 +26,8 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css"
     />
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Saira+Stencil+One&display=swap');
-      </style>
+      @import url("https://fonts.googleapis.com/css2?family=Saira+Stencil+One&display=swap");
+    </style>
 
     <title>Admin Dashboard</title>
   </head>
@@ -35,62 +35,51 @@
     <div class="container-fluid">
       <div class="row">
         <!-- Sidebar -->
-        <%- include('components/nav') %>
+      <%- include('components/nav') %>
 
         <!-- Content -->
         <div class="content col-md-9 table-responsive">
+            <div style="width: 100%; display: flex; justify-content: flex-end;">
+            <a href="/admin/dashboard/team/create" class="btn btn-primary mb-5">Add Verifier</a>
+        </div>
           <!-- Table -->
-          <table class="table table-bordered caption-top">
+          <table class="table table-bordered caption-top ">
            
+            <% if (verifiers.length==0) { %>
+          
+            <h2 class="text-center fw-bold mt-5">No Verifiers</h2>
+            <% }else{ %>
+           
+            <caption>
+              List of Users
+            </caption>
+            <thead class="thead-dark">
+              <tr>
+                <th class="text-dark">SlNo.</th>
+                <th class="text-dark">UserName</th>
+                <th class="text-dark">Email</th>
+                <th class="text-dark">Action</th>
+              </tr>
+            </thead>
 
-           
-              
-              <caption>
-                Registraton Action
-              </caption>
-              <thead class="thead-dark">
-                <tr>
-                  <th class="text-dark">SlNo.</th>
-                  <th class="text-dark">Event</th>
-                  <th class="text-dark">Online</th>
-                  <th class="text-dark">Spot</th>
-                </tr>
-              </thead>
-  
-              <tbody>
-                <% for( let i = 0; i < events.length; i++ ) { %>
+            <tbody>
+              <% for( let i = 0; i < verifiers.length; i++ ) { %>
+
+              <tr>
+                <td><%= i+1 %></td>
+                <td><%= verifiers[i].dataValues.username %></td>
                 
-                
-                <tr>
-                  <td><%= events[i].id %></td>
-                  <td><%= events[i].name %></td>
-                  <td>
-                    <% if (events[i].online) { %>
-                        <button class="btn btn-success">Open</button>
-                    <% }else{ %>
-                        <button class="btn btn-danger">Closed</button>
-                        <% } %>
-                  
-                
+                <td><%= verifiers[i].dataValues.email %></td>
+                <td style="width: 100%;display: flex;flex-wrap: wrap; justify-content: center;gap: 10px 10px;">
+                    <a href="/admin/dashboard/team/details/<%= verifiers[i].dataValues.id %>" class="btn btn-success">DETAILS</a>
+                    <a href="/admin/dashboard/team/delete/<%= verifiers[i].dataValues.id %>" class="btn btn-danger">DELETE</a>
                 </td>
-                  <td>
-                    
-                    <% if (events[i].offline) { %>
-                        <button class="btn btn-success">Open</button>
-                    <% }else{ %>
-                        <button class="btn btn-danger">Closed</button>
-                        <% } %>
-                  </td>
-                </tr>
-                
-                
-                <% } %>
-              
-                <!-- Add more rows as needed -->
-              </tbody>
-              <%# } %>
+              </tr>
+              <% } %>
 
-           
+              <!-- Add more rows as needed -->
+            </tbody>
+            <% } %>
           </table>
         </div>
       </div>

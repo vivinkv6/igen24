@@ -36,6 +36,8 @@ const onlineband = require("../../models/events/online/musicBand");
 const spotchoreography = require("../../models/events/spot/choreography");
 const onlinechoreography = require("../../models/events/online/choreography");
 
+const verifierLogin = require("../../models/users/verifier");
+
 const router = express.Router();
 const bycrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
@@ -133,7 +135,7 @@ router.get("/signup", async (req, res) => {
   /* This code block is checking if there is already an existing admin account in the database. */
   const result = await adminlogin.count();
   if (result == 1) {
-    res.redirect("login");
+    res.redirect("/admin/login");
   } else {
     res.render("../views/admin/signup", {
       passwordError: false,
@@ -306,19 +308,19 @@ router.get("/dashboard/events", async (req, res) => {
           name: "Spot Registration",
           event_name: "Slippery Football",
         });
-      } else if (category == "spot" && event == "crime") {
-        const online = await spotcrime.findAll({});
+      } else if (category == "spot" && event == "photography") {
+        const online = await spotphotography.findAll({});
         res.render("admin/codex", {
           event: online,
           name: "Spot Registration",
-          event_name: "Crime Investigation",
+          event_name: "Spot Photography",
         });
-      } else if (category == "online" && event == "crime") {
-        const online = await onlinecrime.findAll({});
+      } else if (category == "online" && event == "photography") {
+        const online = await onlinephotography.findAll({});
         res.render("admin/codex", {
           event: online,
           name: "Online Registration",
-          event_name: "Crime Investigation",
+          event_name: "Spot Photography",
         });
       } else if (category == "spot" && event == "gaming") {
         const online = await spotgaming.findAll({});
@@ -376,6 +378,133 @@ router.get("/dashboard/events", async (req, res) => {
           name: "Spot Registration",
           event_name: "Codex",
         });
+      }
+    } else {
+      res.clearCookie("admin");
+      res.redirect("/admin/login");
+    }
+  } else {
+    res.redirect("/admin/login");
+  }
+});
+
+//Registration Team
+router.get("/dashboard/team", async (req, res) => {
+  if (req.cookies.admin) {
+    const id = jwt.verify(req.cookies.admin, process.env.JWT_SECRET_TOKEN);
+    const findAdmin = await adminlogin.findByPk(id);
+
+    if (findAdmin) {
+      const verifiers = await verifierLogin.findAll({});
+      res.render("admin/registration", { verifiers: verifiers });
+    } else {
+      res.clearCookie("admin");
+      res.redirect("/admin/login");
+    }
+  } else {
+    res.redirect("/admin/login");
+  }
+});
+
+//create registration  team
+
+router.get("/dashboard/team/create", async (req, res) => {
+  if (req.cookies.admin) {
+    const id = jwt.verify(req.cookies.admin, process.env.JWT_SECRET_TOKEN);
+    const findAdmin = await adminlogin.findByPk(id);
+
+    if (findAdmin) {
+      res.render("admin/create", {
+        emailExist: false,
+        passwordError: false,
+        email: "",
+        password: "",
+        confirm: "",
+      });
+    } else {
+      res.clearCookie("admin");
+      res.redirect("/admin/login");
+    }
+  } else {
+    res.redirect("/admin/login");
+  }
+});
+
+router.post("/dashboard/team/create", async (req, res) => {
+  const { email, password, confirm } = req.body;
+
+  if (password !== confirm) {
+    res.render("admin/create", {
+      emailExist: false,
+      passwordError: true,
+      email: email,
+      password: password,
+      confirm: confirm,
+    });
+  } else {
+    const findVerifier = await verifierLogin.findOne({
+      where: {
+        email: email,
+      },
+    });
+
+    if (findVerifier) {
+      res.render("admin/create", {
+        emailExist: true,
+        passwordError: false,
+        email: email,
+        password: password,
+        confirm: confirm,
+      });
+    } else {
+      const addVerifier = await verifierLogin
+        .create({
+          username: email?.split("@")[0],
+          email: email,
+          password: password,
+        })
+        .then(() => {
+          res.redirect("/admin/dashboard/team");
+        })
+        .catch((err) => {
+          res.json({ err: err.message });
+        });
+    }
+  }
+});
+
+//delete specific verifier
+
+router.get("/dashboard/team/delete/:id", async (req, res) => {
+  const { id } = req.params;
+  const findVerifier = await verifierLogin.findByPk(id);
+  if (findVerifier) {
+    findVerifier
+      .destroy()
+      .then(() => {
+        res.redirect("/admin/dashboard/team");
+      })
+      .catch((err) => {
+        res.json({ err: err.message });
+      });
+  } else {
+    res.redirect("/admin/dashboard/team");
+  }
+});
+
+router.get("/dashboard/team/details/:id", async (req, res) => {
+  const { id } = req.params;
+
+  if (req.cookies.admin) {
+    const tokenid = jwt.verify(req.cookies.admin, process.env.JWT_SECRET_TOKEN);
+    const findAdmin = await adminlogin.findByPk(tokenid);
+
+    if (findAdmin) {
+      const findVerifier = await verifierLogin.findByPk(id);
+      if (findVerifier) {
+        res.render("admin/details", { verifier: findVerifier });
+      } else {
+        res.redirect("/admin/dashboard/team");
       }
     } else {
       res.clearCookie("admin");
