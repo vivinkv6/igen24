@@ -26,6 +26,7 @@ const mobileGaming= sequelizeConfig.define("onlinegaming", {
   transactionid: {
     type: DataTypes.STRING,
     allowNull:false,
+    unique:true
   },
   payment: {
     type: DataTypes.STRING,

@@ -25,6 +25,7 @@ const cipher = sequelizeConfig.define("onlinecipher", {
   transactionid: {
     type: DataTypes.STRING,
     allowNull:false,
+    unique:true
   },
   payment: {
     type: DataTypes.STRING,

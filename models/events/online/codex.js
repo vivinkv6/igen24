@@ -26,6 +26,7 @@ const codex = sequelizeConfig.define("onlinecodex", {
   transactionid: {
     type: DataTypes.STRING,
     allowNull:false,
+    unique:true
   },
   payment: {
     type: DataTypes.STRING,

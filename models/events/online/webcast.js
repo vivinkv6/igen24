@@ -26,6 +26,7 @@ const webCast= sequelizeConfig.define("onlineWebcast", {
   transactionid: {
     type: DataTypes.STRING,
     allowNull:false,
+    unique:true
   },
   payment: {
     type: DataTypes.STRING,

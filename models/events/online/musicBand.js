@@ -22,6 +22,7 @@ const band= sequelizeConfig.define("onlineBand", {
   transactionid: {
     type: DataTypes.STRING,
     allowNull:false,
+    unique:true
   },
   payment: {
     type: DataTypes.STRING,

@@ -26,6 +26,7 @@ const itQuiz = sequelizeConfig.define("onlinequiz", {
   transactionid: {
     type: DataTypes.STRING,
     allowNull:false,
+    unique:true
   },
   payment: {
     type: DataTypes.STRING,
