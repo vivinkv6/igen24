@@ -314,6 +314,14 @@ router.get("/dashboard", async (req, res) => {
   }
 });
 
+router.get('/registration',(req,res)=>{
+  if(req.cookies.verifier){
+    res.redirect('/events')
+  }else{
+    res.redirect('/verifier/login')
+  }
+})
+
 
 router.get("/logout", (req, res) => {
   res.clearCookie("verifier");

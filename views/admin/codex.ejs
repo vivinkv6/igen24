@@ -100,7 +100,7 @@
                 <td><%= event[i].dataValues.department %></td>
                 <% if(event[i].dataValues.transactionid){ %>
                 <td><%= event[i].dataValues.transactionid %></td>
-                <td><img src="<%= event[i].dataValues.payment %>" height="300" width="200" alt=""></td>
+                <td> <a href="<%= event[i].dataValues.payment %>" target="_blank" ><img src="<%= event[i].dataValues.payment %>" height="300" width="200" alt=""></a> </td>
                 <% } %>
               </tr>
               <% } %>

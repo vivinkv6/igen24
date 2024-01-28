@@ -22,7 +22,7 @@
     />
     <link rel="stylesheet" href="/stylesheets/events/codex/online.css" />
 
-    <title>Mobile Gaming Online Registration</title>
+    <title>Crime Investigation Online Registration</title>
   </head>
   <body>
     <div
@@ -31,18 +31,21 @@
       data-aos-duration="2000"
     >
       <div class="registration-header">
-        <h1 class="registration-title">Mobile Gaming Online Registration</h1>
-        <!-- <p class="registration-description">
-          Please fill out the form to register
-        </p> -->
+        <h1 class="registration-title">Crime Investigation Online Registration</h1>
       </div>
-      <form class="registration-card" action="online" method="post" enctype="multipart/form-data">
+      <form
+        class="registration-card"
+        id="forms"
+        action="online"
+        method="post"
+        enctype="multipart/form-data"
+      >
         <!-- <div class="registration-section">
           <h2 class="registration-section-title">Personal Information</h2>
         </div> -->
         <div class="registration-form">
           <div class="form-group">
-            <label for="name" class="form-label">Full Name</label>
+            <label for="name" class="form-label">Participant 1</label>
             <input
               type="text"
               id="name"
@@ -62,19 +65,6 @@
               placeholder="john@example.com"
               required
             />
-           
-          </div>
-          
-          <div class="form-group">
-            <label for="role" class="form-label">College</label>
-            <input
-              type="text"
-              id="college"
-              name="college"
-              class="form-input"
-              placeholder="Enter College Name"
-              required
-            />
           </div>
           <div class="form-group">
             <label for="community" class="form-label">Department</label>
@@ -86,12 +76,24 @@
               required
             />
           </div>
-        
+
+          <div class="form-group">
+            <label for="role" class="form-label">College</label>
+            <input
+              type="text"
+              id="college"
+              name="college"
+              class="form-input"
+              placeholder="Enter College Name"
+              required
+            />
+          </div>
+
           <div class="form-group">
             <label for="place" class="form-label">Online Payment QRCode</label>
             <input
               type="image"
-              style="height: 400px;object-fit: contain; "
+              style="height: 400px; object-fit: contain"
               src="https://qrcode.shanuthewebdev.in/images/logo.png"
               class="form-input"
               required
@@ -109,7 +111,9 @@
             />
           </div>
           <div class="form-group">
-            <label for="id-proof" class="form-label">Upload Payment Screenshot </label>
+            <label for="id-proof" class="form-label"
+              >Upload Payment Screenshot
+            </label>
             <input
               type="file"
               height="300"
@@ -126,6 +130,53 @@
         </div>
       </form>
     </div>
+    <div id="formContainer"></div>
+    <center>
+      <button
+        type="button"
+        style="width: 50%"
+        class="btn btn-primary"
+        onclick="addForm()"
+      >
+        Add Participant
+      </button>
+    </center>
+
+    <script>
+      var clickCount = 1;
+      var maxClicks = 5; // Set your desired limit here
+
+      function addForm() {
+        if (clickCount < maxClicks) {
+          clickCount++;
+
+          var formContainer = document.getElementById("formContainer");
+          var form = document.getElementById("forms");
+
+          var newForm = document.createElement("div");
+          newForm.className = "form";
+
+          newForm.innerHTML = `
+        <div class="form-group">
+          <label for="email-address" class="form-label">Participant ${clickCount}</label>
+          <input type="text"  class="form-input" id="name${clickCount}" name="name" required />
+        </div>
+        <div class="form-group">
+          <label for="email-address" class="form-label">Email address</label>
+          <input type="email" class="form-input" id="email${clickCount}" name="email" required pattern="[^\s@]+@[^\s@]+\.[^\s@]+" />
+        </div>
+        <div class="form-group">
+          <label for="password" class="form-label">Department</label>
+          <input type="text" class="form-input" id="department${clickCount}" name="department" required />
+        </div>
+      `;
+
+          form.appendChild(newForm);
+        } else {
+          alert("You have reached the maximum limit of clicks.");
+        }
+      }
+    </script>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>

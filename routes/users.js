@@ -41,10 +41,17 @@ const onlinecipher = require("../models/events/online/cipherSolving");
 const spotchoreography = require("../models/events/spot/choreography");
 const onlinechoreography = require("../models/events/online/choreography");
 
-//TODO
 //music band
 const spotband = require("../models/events/spot/musicBand");
 const onlineband = require("../models/events/online/musicBand");
+
+//football
+const spotfootball = require("../models/events/spot/slipperyFootball");
+const onlinefootball = require("../models/events/online/slipperyFootball");
+
+//crime investigation
+const spotcrime = require("../models/events/spot/crimeInvestigation");
+const onlinecrime = require("../models/events/online/crimeInvestigation");
 
 /* GET users listing. */
 router.get("/", function (req, res, next) {
@@ -117,11 +124,13 @@ router.get("/:event/spot", (req, res) => {
   }
 });
 
-
-
 //GET codex spot registration
 router.get("/codex/registration/spot", (req, res) => {
-  res.render("events/codex/spot");
+  if (req.cookies.verifier) {
+    res.render("events/codex/spot");
+  } else {
+    res.redirect('/events/error');
+  }
 });
 
 //POST codex spot registration
@@ -210,7 +219,11 @@ router.post(
 
 //GET photography spot registration
 router.get("/photography/registration/spot", (req, res) => {
-  res.render("events/photography/spot");
+  if (req.cookies.verifier) {
+    res.render("events/photography/spot");
+  } else {
+    res.redirect('/events/error');
+  }
 });
 
 router.post("/photography/registration/spot", async (req, res) => {
@@ -242,42 +255,6 @@ router.post("/photography/registration/spot", async (req, res) => {
       res.json({ err: err.message });
     });
 });
-
-//GET photography spot registration
-router.get("/photography/registration/spot", (req, res) => {
-  res.render("events/photography/spot");
-});
-
-router.post("/photography/registration/spot", async (req, res) => {
-  const { name, email, department, college } = req.body;
-  const spotLen = await spotPhotography.count();
-  const onlineLen = await onlinePhotography.count();
-  const len = spotLen + onlineLen;
-
-  const register = await spotPhotography
-    .create({
-      id: `SP${len + 1}`,
-      name: name,
-      college: college,
-      email: email,
-      department: department,
-    })
-    .then((data) => {
-      res.render("events/message", {
-        id: data.dataValues.id,
-        mode: "Spot",
-        name: data.dataValues.name,
-        college: data.dataValues.college,
-        department: data.dataValues.department,
-        event: "CLICK",
-        online: false,
-      });
-    })
-    .catch((err) => {
-      res.json({ err: err.message });
-    });
-});
-
 
 //online photography registration
 
@@ -331,10 +308,12 @@ router.post(
   }
 );
 
-
-
 router.get("/reconcile/registration/spot", (req, res) => {
-  res.render("events/reconcile/spot");
+  if (req.cookies.verifier) {
+    res.render("events/reconcile/spot");
+  } else {
+    res.redirect('/events/error');
+  }
 });
 
 router.post("/reconcile/registration/spot", async (req, res) => {
@@ -368,7 +347,6 @@ router.post("/reconcile/registration/spot", async (req, res) => {
 });
 
 //online reconcile registration
-
 
 router.get("/reconcile/registration/online", (req, res) => {
   res.render("events/reconcile/online");
@@ -420,11 +398,13 @@ router.post(
   }
 );
 
-
-
 //spot gaming registration
 router.get("/gaming/registration/spot", (req, res) => {
-  res.render("events/gaming/spot");
+  if (req.cookies.verifier) {
+    res.render("events/gaming/spot");
+  } else {
+    res.redirect('/events/error');
+  }
 });
 
 router.post("/gaming/registration/spot", async (req, res) => {
@@ -456,7 +436,6 @@ router.post("/gaming/registration/spot", async (req, res) => {
       res.json({ err: err.message });
     });
 });
-
 
 //online gaming registration
 router.get("/gaming/registration/online", (req, res) => {
@@ -511,7 +490,11 @@ router.post(
 
 //spot web designing registration
 router.get("/webcast/registration/spot", (req, res) => {
-  res.render("events/webcast/spot");
+  if (req.cookies.verifier) {
+    res.render("events/webcast/spot");
+  } else {
+    res.redirect('/events/error');
+  }
 });
 
 router.post("/webcast/registration/spot", async (req, res) => {
@@ -596,7 +579,11 @@ router.post(
 
 //spot IT quiz registration
 router.get("/itquiz/registration/spot", (req, res) => {
-  res.render("events/itquiz/spot");
+  if (req.cookies.verifier) {
+    res.render("events/itquiz/spot");
+  } else {
+    res.redirect('/events/error');
+  }
 });
 
 router.post("/itquiz/registration/spot", async (req, res) => {
@@ -685,7 +672,11 @@ router.post(
 
 //spot cipher registration
 router.get("/cipher/registration/spot", (req, res) => {
-  res.render("events/cipher/spot");
+  if (req.cookies.verifier) {
+    res.render("events/cipher/spot");
+  } else {
+    res.redirect('/events/error');
+  }
 });
 
 router.post("/cipher/registration/spot", async (req, res) => {
@@ -773,7 +764,11 @@ router.post(
 
 //spot choreography registration
 router.get("/choreography/registration/spot", (req, res) => {
-  res.render("events/choreography/spot");
+  if (req.cookies.verifier) {
+    res.render("events/choreography/spot");
+  } else {
+    res.redirect('/events/error');
+  }
 });
 
 router.post("/choreography/registration/spot", async (req, res) => {
@@ -857,5 +852,288 @@ router.post(
       });
   }
 );
+
+//spot band registration
+router.get("/band/registration/spot", (req, res) => {
+  if (req.cookies.verifier) {
+    res.render("events/band/spot");
+  } else {
+    res.redirect('/events/error');
+  }
+});
+
+router.post("/band/registration/spot", async (req, res) => {
+  const { name, email, department, college } = req.body;
+  console.log(req.body);
+  const spotLen = await spotband.count();
+  const onlineLen = await onlineband.count();
+  const len = spotLen + onlineLen;
+
+  const register = await spotband
+    .create({
+      id: `MB${len + 1}`,
+      name: [name],
+      college: college,
+      email: [email],
+      department: [department],
+    })
+    .then((data) => {
+      res.render("events/message", {
+        id: data.dataValues.id,
+        mode: "Spot",
+        name: data.dataValues.name,
+        college: data.dataValues.college,
+        department: data.dataValues.department,
+        event: "Music Band",
+        online: false,
+      });
+    })
+    .catch((err) => {
+      res.json({ err: err });
+    });
+});
+
+//online band registration
+
+router.get("/band/registration/online", (req, res) => {
+  res.render("events/band/online");
+});
+
+router.post(
+  "/band/registration/online",
+  upload.single("payment"),
+  async (req, res) => {
+    const spotLen = await spotband.count();
+    const onlineLen = await onlineband.count();
+    const len = spotLen + onlineLen;
+    const { name, email, college, department, transaction } = req.body;
+    const fileBuffer = req.file.buffer.toString("base64");
+    const fileUpload = await cloudinaryConfig.uploader.upload(
+      `data:image/png;base64,${fileBuffer}`,
+      {
+        folder: "/payment",
+        public_id: Date.now() + "-" + req.file.originalname,
+        encoding: "base64",
+      }
+    );
+    console.log(req.body);
+
+    const register = await onlineband
+      .create({
+        id: `MB${len + 1}`,
+        name: [name],
+        email: [email],
+        college: college,
+        department: [department],
+        transactionid: transaction,
+        payment: fileUpload.secure_url,
+      })
+      .then((data) => {
+        res.render("events/message", {
+          id: data.dataValues.id,
+          mode: "Online",
+          name: data.dataValues.name,
+          college: data.dataValues.college,
+          department: data.dataValues.department,
+          transaction: data.dataValues.transactionid,
+          event: "Music Band",
+          online: true,
+        });
+      })
+      .catch((err) => {
+        res.json({ err: err.message });
+      });
+  }
+);
+
+//spot football registration
+router.get("/football/registration/spot", (req, res) => {
+  if (req.cookies.verifier) {
+    res.render("events/football/spot");
+  } else {
+    res.redirect('/events/error');
+  }
+});
+
+router.post("/football/registration/spot", async (req, res) => {
+  const { name, email, department, college } = req.body;
+  console.log(req.body);
+  const spotLen = await spotfootball.count();
+  const onlineLen = await onlinefootball.count();
+  const len = spotLen + onlineLen;
+
+  const register = await spotfootball
+    .create({
+      id: `FB${len + 1}`,
+      name: [name],
+      college: college,
+      email: [email],
+      department: [department],
+    })
+    .then((data) => {
+      res.render("events/message", {
+        id: data.dataValues.id,
+        mode: "Spot",
+        name: data.dataValues.name,
+        college: data.dataValues.college,
+        department: data.dataValues.department,
+        event: "Football",
+        online: false,
+      });
+    })
+    .catch((err) => {
+      res.json({ err: err });
+    });
+});
+
+//online football registration
+
+router.get("/football/registration/online", (req, res) => {
+  res.render("events/football/online");
+});
+
+router.post(
+  "/football/registration/online",
+  upload.single("payment"),
+  async (req, res) => {
+    const spotLen = await spotfootball.count();
+    const onlineLen = await onlinefootball.count();
+    const len = spotLen + onlineLen;
+    const { name, email, college, department, transaction } = req.body;
+    const fileBuffer = req.file.buffer.toString("base64");
+    const fileUpload = await cloudinaryConfig.uploader.upload(
+      `data:image/png;base64,${fileBuffer}`,
+      {
+        folder: "/payment",
+        public_id: Date.now() + "-" + req.file.originalname,
+        encoding: "base64",
+      }
+    );
+    console.log(req.body);
+
+    const register = await onlinefootball
+      .create({
+        id: `FB${len + 1}`,
+        name: [name],
+        email: [email],
+        college: college,
+        department: [department],
+        transactionid: transaction,
+        payment: fileUpload.secure_url,
+      })
+      .then((data) => {
+        res.render("events/message", {
+          id: data.dataValues.id,
+          mode: "Online",
+          name: data.dataValues.name,
+          college: data.dataValues.college,
+          department: data.dataValues.department,
+          transaction: data.dataValues.transactionid,
+          event: "Football",
+          online: true,
+        });
+      })
+      .catch((err) => {
+        res.json({ err: err.message });
+      });
+  }
+);
+
+//spot crime investigation registration
+router.get("/crimeinvestigation/registration/spot", (req, res) => {
+  if (req.cookies.verifier) {
+    res.render("events/crimeinvestigation/spot");
+  } else {
+    res.redirect('/events/error');
+  }
+});
+
+router.post("/crimeinvestigation/registration/spot", async (req, res) => {
+  const { name, email, department, college } = req.body;
+  console.log(req.body);
+  const spotLen = await spotcrime.count();
+  const onlineLen = await onlinecrime.count();
+  const len = spotLen + onlineLen;
+
+  const register = await spotcrime
+    .create({
+      id: `CI${len + 1}`,
+      name: [name],
+      college: college,
+      email: [email],
+      department: [department],
+    })
+    .then((data) => {
+      res.render("events/message", {
+        id: data.dataValues.id,
+        mode: "Spot",
+        name: data.dataValues.name,
+        college: data.dataValues.college,
+        department: data.dataValues.department,
+        event: "Crime Investigation",
+        online: false,
+      });
+    })
+    .catch((err) => {
+      res.json({ err: err });
+    });
+});
+
+//online football registration
+
+router.get("/crimeinvestigation/registration/online", (req, res) => {
+  res.render("events/crimeinvestigation/online");
+});
+
+router.post(
+  "/crimeinvestigation/registration/online",
+  upload.single("payment"),
+  async (req, res) => {
+    const spotLen = await spotcrime.count();
+    const onlineLen = await onlinecrime.count();
+    const len = spotLen + onlineLen;
+    const { name, email, college, department, transaction } = req.body;
+    const fileBuffer = req.file.buffer.toString("base64");
+    const fileUpload = await cloudinaryConfig.uploader.upload(
+      `data:image/png;base64,${fileBuffer}`,
+      {
+        folder: "/payment",
+        public_id: Date.now() + "-" + req.file.originalname,
+        encoding: "base64",
+      }
+    );
+    console.log(req.body);
+
+    const register = await onlinecrime
+      .create({
+        id: `CI${len + 1}`,
+        name: [name],
+        email: [email],
+        college: college,
+        department: [department],
+        transactionid: transaction,
+        payment: fileUpload.secure_url,
+      })
+      .then((data) => {
+        res.render("events/message", {
+          id: data.dataValues.id,
+          mode: "Online",
+          name: data.dataValues.name,
+          college: data.dataValues.college,
+          department: data.dataValues.department,
+          transaction: data.dataValues.transactionid,
+          event: "Crime Investigation",
+          online: true,
+        });
+      })
+      .catch((err) => {
+        res.json({ err: err.message });
+      });
+  }
+);
+
+router.get('/error',(req,res)=>{
+  res.render('events/error')
+});
 
 module.exports = router;

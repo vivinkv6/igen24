@@ -8,11 +8,11 @@ const band= sequelizeConfig.define("spotBand", {
     allowNull: false,
   },
   email:{
-    type: DataTypes.ARRAY(DataTypes.STRING) ,
+    type: DataTypes.ARRAY(DataTypes.STRING),
     allowNull: false,
   },
   name: {
-    type: DataTypes.ARRAY(DataTypes.STRING) ,
+    type: DataTypes.ARRAY(DataTypes.STRING),
     allowNull: false,
   },
   college: {

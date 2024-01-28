@@ -22,7 +22,7 @@
     />
     <link rel="stylesheet" href="/stylesheets/events/message.css" />
 
-    <title>Success</title>
+    <title>Failure</title>
   </head>
   <body>
     <div class="msg-container">
@@ -32,32 +32,18 @@
         data-aos-delay="500"
         data-aos-duration="1000"
       >
-        <center><img src="/images/verification.png" alt="" /></center>
-        <h1>Registration Completed Successfully</h1>
+        <center><img src="/images/cancel.png" alt="" /></center>
+        <h1>Registration Cancelled</h1>
         <br />
-        <h3>
-          <b>Chess Number: </b> <%= id %> <br /><br />
-          <b>Name: </b><%= name %> <br />
-          <br />
-          <b>College: </b><%= college %> <br />
-          <br />
-          <b>Department: </b><%= department %> <br />
-          <br />
-          <b>Event: </b><%= event %> <br />
-          <br />
-          <b>Payment:</b> <%= mode %> <br />
-          <% if (online) { %>
-            <br />
-            <b>TransactionID:</b> <%= transaction %> <br />
-          <% } %>
-          <br />
-         
-        </h3>
-        <p style="color: rgb(243, 70, 70);">
-          ! Please capture a screenshot and it will be submitted to the
-          event team for verification.
+
+        <p style="color: rgb(243, 70, 70)">
+          Only members of the registration team can complete spot registrations.
+          We kindly request the public to utilize the convenient online
+          registration process
         </p>
-        <button class="btn btn-primary"><a href="/events">Go to Events</a></button>
+        <button class="btn btn-primary">
+          <a href="/events">Go to Events</a>
+        </button>
       </div>
     </div>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>

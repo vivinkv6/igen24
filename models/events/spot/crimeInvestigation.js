@@ -8,11 +8,11 @@ const crimeInvestigation = sequelizeConfig.define("spotci", {
     allowNull: false,
   },
   name: {
-    type: DataTypes.STRING,
+    type: DataTypes.ARRAY(DataTypes.STRING),
     allowNull: false,
   },
   email:{
-    type: DataTypes.STRING,
+    type: DataTypes.ARRAY(DataTypes.STRING),
     allowNull: false,
   },
   college: {
@@ -20,7 +20,7 @@ const crimeInvestigation = sequelizeConfig.define("spotci", {
     allowNull: false,
   },
   department: {
-    type: DataTypes.STRING,
+    type: DataTypes.ARRAY(DataTypes.STRING),
     allowNull: false,
   },
 });

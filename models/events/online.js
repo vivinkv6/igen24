@@ -1,17 +1,22 @@
 const { DataTypes } = require("sequelize");
-const sequelizeConfig = require("../../../config/sequelize.config");
+const sequelizeConfig = require("../../config/sequelize.config");
 
-const band= sequelizeConfig.define("onlineBand", {
-  id: {
+const eventModel = sequelizeConfig.define("onlineevents", {
+  chessno: {
     type: DataTypes.STRING,
+    allowNull: false,
     primaryKey: true,
+    defaultValue: DataTypes.UUIDV4,
+  },
+  name: {
+    type: DataTypes.STRING,
     allowNull: false,
   },
-  email:{
+  participant: {
     type: DataTypes.ARRAY(DataTypes.STRING),
     allowNull: false,
   },
-  name: {
+  email: {
     type: DataTypes.ARRAY(DataTypes.STRING),
     allowNull: false,
   },
@@ -25,14 +30,13 @@ const band= sequelizeConfig.define("onlineBand", {
   },
   transactionid: {
     type: DataTypes.STRING,
-    allowNull:false,
-    unique:true
+    allowNull: false,
+    unique: true,
   },
-  payment: {
+  image: {
     type: DataTypes.STRING,
     allowNull: false,
   },
 });
 
-
-module.exports=band
+module.exports=eventModel
