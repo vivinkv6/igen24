@@ -1115,6 +1115,7 @@ router.post(
         payment: fileUpload.secure_url,
       })
       .then((data) => {
+        console.log(data);
         res.render("events/message", {
           id: data.dataValues.id,
           mode: "Online",
@@ -1127,6 +1128,7 @@ router.post(
         });
       })
       .catch((err) => {
+        console.log(err);
         res.json({ err: err.message });
       });
   }
