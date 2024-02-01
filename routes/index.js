@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-const targetDate = new Date(2024, 1, 14, 12, 0, 0);
+const targetDate = new Date(2024, 1, 8, 10, 30, 0);
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
