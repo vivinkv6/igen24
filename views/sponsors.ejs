@@ -16,38 +16,47 @@
   </head>
   <body>
     <div class="container">
-      <div
-        class="row reg-container mt-5"
-        style="height: 90dvh; display: flex; row-gap: 30px; align-items: center"
-      >
-        <div class="col-lg-6 col-md-6 online">
+      <div class="row card-container mt-5 " style="margin-bottom: 100px;">
+        <% for( let i = 0; i < sponsors.length; i++ ) { %>
+
+        <div
+          class="col-md-6 col-lg-4 card-item"
+          data-aos="flip-right"
+          data-aos-duration="1000"
+        >
           <center>
-            <a href="registration/online">
-              <img
-                src="/images/online.jpg"
-                data-aos="fade-in"
-                data-aos-duration="1000"
-                width="300"
-                height="400"
-                alt=""
-              />
+            <a href="/images/Coding.pdf">
+              <img src="<%= sponsors[i].image %>" class="rounded" alt="" />
             </a>
+            <br />
+            <a href="/events/<%= sponsors[i].url %>/registration" data-aos="zoom-in" class="btn mt-3">Register Now</a>
           </center>
         </div>
-        <div class="col-lg-6 col-md-6 spot">
+
+        <!-- <div
+          class="col-md-6 col-lg-4 card-item"
+          data-aos="flip-right"
+          data-aos-duration="1000"
+        >
           <center>
-            <a href="registration/spot">
+            <a
+              href="<%#= posters[i].image %>"
+              style="position: relative"
+              target="_blank"
+            >
               <img
-                src="/images/spot.jpg"
-                data-aos="fade-in"
-                data-aos-duration="1000"
-                width="300"
-                height="400"
+                src="<%#= posters[i].image %>"
+                class="rounded closed-img"
                 alt=""
               />
+              <h1 class="text-light closed-content" style="">CLOSED</h1>
             </a>
+            <br />
+            <button class="btn closed-btn mt-3">Register Now</button>
           </center>
-        </div>
+        </div> -->
+
+        <% } %>
       </div>
     </div>
 

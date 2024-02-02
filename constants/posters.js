@@ -2,17 +2,17 @@ const posters = [
   {
     id: 1,
     name: "band",
-    image: "/images/poster1.jpg",
+    image: "/images/poster1.jpg",   
   },
   {
     id: 2,
     name: "choreography",
-    image: "/images/poster3.jpg",
+    image: "/images/poster5.jpg",
   },
   {
     id: 3,
     name: "cipher",
-    image: "/images/poster2.jpg",
+    image: "/images/poster8.jpg",
   },
   {
     id: 4,
@@ -27,33 +27,38 @@ const posters = [
   {
     id: 6,
     name: "itquiz",
-    image: "/images/poster3.jpg",
+    image: "/images/poster6.jpg",
   },
   {
     id: 7,
     name: "gaming",
-    image: "/images/poster3.jpg",
+    image: "/images/poster7.jpg",
   },
  
   {
     id: 8,
     name: "photography",
-    image: "/images/poster2.jpg",
+    image: "/images/poster9.jpg",
   },
   {
     id: 9,
     name: "reconcile",
-    image: "/images/poster3.jpg",
+    image: "/images/poster4.jpg",
   },
   {
     id: 10,
     name: "football",
-    image: "/images/poster3.jpg",
+    image: "/images/poster10.jpg",
   },
   {
     id: 11,
     name: "webcast",
-    image: "/images/poster2.jpg",
+    image: "/images/poster11.jpg",
+  },
+  {
+    id: 12,
+    name: "trivia",
+    image: "/images/poster12.jpg",
   },
 ];
 

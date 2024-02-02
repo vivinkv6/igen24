@@ -53,6 +53,10 @@ const onlinefootball = require("../models/events/online/slipperyFootball");
 const spotcrime = require("../models/events/spot/crimeInvestigation");
 const onlinecrime = require("../models/events/online/crimeInvestigation");
 
+//trivia 
+const onlinetrivia=require('../models/events/online/trivia')
+const spottrivia=require('../models/events/spot/trivia')
+
 /* GET users listing. */
 router.get("/", function (req, res, next) {
   res.render("event", {
@@ -669,6 +673,105 @@ router.post(
       });
   }
 );
+
+
+
+
+
+//spot Trivia quiz registration
+router.get("/trivia/registration/spot", (req, res) => {
+  if (req.cookies.verifier) {
+    res.render("events/trivia/spot");
+  } else {
+    res.redirect('/events/error');
+  }
+});
+
+router.post("/trivia/registration/spot", async (req, res) => {
+  const { name, email, department, college } = req.body;
+  console.log(name);
+  const spotLen = await spottrivia.count();
+  const onlineLen = await onlinetrivia.count();
+  const len = spotLen + onlineLen;
+
+  const register = await spottrivia
+    .create({
+      id: `TF${len + 1}`,
+      name: [name],
+      college: college,
+      email: [email],
+      department: [department],
+    })
+    .then((data) => {
+      res.render("events/message", {
+        id: data.dataValues.id,
+        mode: "Spot",
+        name: data.dataValues.name,
+        college: data.dataValues.college,
+        department: data.dataValues.department,
+        event: "Trivia Fiesta",
+        online: false,
+      });
+    })
+    .catch((err) => {
+      res.json({ err: err });
+    });
+});
+
+//online Trivia quiz registration
+router.get("/trivia/registration/online", (req, res) => {
+  res.render("events/trivia/online");
+});
+
+router.post(
+  "/trivia/registration/online",
+  upload.single("payment"),
+  async (req, res) => {
+    const { name, email, department, college, transaction } = req.body;
+    console.log(name);
+    const spotLen = await spottrivia.count();
+    const onlineLen = await onlinetrivia.count();
+    const len = spotLen + onlineLen;
+
+    const fileBuffer = req.file.buffer.toString("base64");
+    const fileUpload = await cloudinaryConfig.uploader.upload(
+      `data:image/png;base64,${fileBuffer}`,
+      {
+        folder: "/payment",
+        public_id: Date.now() + "-" + req.file.originalname,
+        encoding: "base64",
+      }
+    );
+
+    const register = await onlinetrivia
+      .create({
+        id: `TF${len + 1}`,
+        name: [name],
+        college: college,
+        email: [email],
+        department: [department],
+        transactionid: transaction,
+        payment: fileUpload.secure_url,
+      })
+      .then((data) => {
+        res.render("events/message", {
+          id: data.dataValues.id,
+          mode: "Online",
+          name: data.dataValues.name,
+          college: data.dataValues.college,
+          department: data.dataValues.department,
+          event: "Trivia Fiesta",
+          transaction: data.dataValues.transactionid,
+          online: true,
+        });
+      })
+      .catch((err) => {
+        res.json({ err: err });
+      });
+  }
+);
+
+
 
 //spot cipher registration
 router.get("/cipher/registration/spot", (req, res) => {

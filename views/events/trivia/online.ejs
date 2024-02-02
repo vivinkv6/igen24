@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik+Glitch&family=Russo+One&family=Saira+Stencil+One&family=Ubuntu+Condensed&family=Unica+One&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- AOS  -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/stylesheets/events/codex/online.css" />
+
+    <title>Trivia Fiesta Online Registration</title>
+  </head>
+  <body>
+    <div
+      class="registration-container"
+      data-aos="fade-in"
+      data-aos-duration="2000"
+    >
+      <div class="registration-header">
+        <h1 class="registration-title">Trivia Fiesta Online Registration</h1>
+      </div>
+      <form
+        class="registration-card"
+        id="forms"
+        action="online"
+        method="post"
+        enctype="multipart/form-data"
+      >
+        <!-- <div class="registration-section">
+          <h2 class="registration-section-title">Personal Information</h2>
+        </div> -->
+        <div class="registration-form">
+          <div class="form-group">
+            <label for="name" class="form-label">Participant 1</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              class="form-input"
+              placeholder="John Doe"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="email" class="form-label">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="form-input"
+              placeholder="john@example.com"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="community" class="form-label">Department</label>
+            <input
+              type="text"
+              id="department"
+              name="department"
+              class="form-input"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="role" class="form-label">College</label>
+            <input
+              type="text"
+              id="college"
+              name="college"
+              class="form-input"
+              placeholder="Enter College Name"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="place" class="form-label">Online Payment QRCode</label>
+            <input
+              type="image"
+              style="height: 400px; object-fit: contain"
+              src="https://qrcode.shanuthewebdev.in/images/logo.png"
+              class="form-input"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="mobile" class="form-label">Transaction ID</label>
+            <input
+              type="text"
+              id="transaction"
+              name="transaction"
+              class="form-input"
+              placeholder="Enter Transaction ID"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="id-proof" class="form-label"
+              >Upload Payment Screenshot
+            </label>
+            <input
+              type="file"
+              height="300"
+              width="100"
+              id="id-proof"
+              name="payment"
+              class="form-input"
+              required
+            />
+          </div>
+          <div class="form-submit">
+            <button type="submit" class="form-button">Register</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div id="formContainer"></div>
+    <center>
+      <button
+        type="button"
+        style="width: 50%"
+        class="btn btn-primary"
+        onclick="addForm()"
+      >
+        Add Participant
+      </button>
+    </center>
+
+    <script>
+      var clickCount = 1;
+      var maxClicks = 2; // Set your desired limit here
+
+      function addForm() {
+        if (clickCount < maxClicks) {
+          clickCount++;
+
+          var formContainer = document.getElementById("formContainer");
+          var form = document.getElementById("forms");
+
+          var newForm = document.createElement("div");
+          newForm.className = "form";
+
+          newForm.innerHTML = `
+        <div class="form-group">
+          <label for="email-address" class="form-label">Participant ${clickCount}</label>
+          <input type="text"  class="form-input" id="name${clickCount}" name="name" required />
+        </div>
+        <div class="form-group">
+          <label for="email-address" class="form-label">Email address</label>
+          <input type="email" class="form-input" id="email${clickCount}" name="email" required pattern="[^\s@]+@[^\s@]+\.[^\s@]+" />
+        </div>
+        <div class="form-group">
+          <label for="password" class="form-label">Department</label>
+          <input type="text" class="form-input" id="department${clickCount}" name="department" required />
+        </div>
+      `;
+
+          form.appendChild(newForm);
+        } else {
+          alert("You have reached the maximum limit of clicks.");
+        }
+      }
+    </script>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
