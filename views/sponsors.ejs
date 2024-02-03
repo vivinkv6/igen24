@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>IGEN24</title>
+    <title>Our Sponsors and Associates</title>
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,24 +12,32 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="/stylesheets/event.css" />
+    <link rel="stylesheet" href="/stylesheets/sponsor.css" />
   </head>
   <body>
     <div class="container">
-      <div class="row card-container mt-5 " style="margin-bottom: 100px;">
+      <div class="row card-container mt-5" style="margin-bottom: 100px">
+        <span class="header">Our Sponsors and Associates</span>
         <% for( let i = 0; i < sponsors.length; i++ ) { %>
 
         <div
           class="col-md-6 col-lg-4 card-item"
-          data-aos="flip-right"
+          data-aos="fade-in"
           data-aos-duration="1000"
         >
           <center>
-            <a href="/images/Coding.pdf">
+            <a href="<%= sponsors[i].url %>" target="_blank">
               <img src="<%= sponsors[i].image %>" class="rounded" alt="" />
             </a>
             <br />
-            <a href="/events/<%= sponsors[i].url %>/registration" data-aos="zoom-in" class="btn mt-3">Register Now</a>
+            <a
+              href="<%= sponsors[i].url %>"
+              target="_blank"
+              style="color: white"
+              data-aos="zoom-in"
+              class="btn primary mt-3"
+              >Profile</a
+            >
           </center>
         </div>
 

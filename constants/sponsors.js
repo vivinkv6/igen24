@@ -1,59 +1,33 @@
 const sponsors = [
     {
       id: 1,
-      url: "",
-      image: "/images/poster1.jpg",
+      url: "https://docs.google.com/forms/d/e/1FAIpQLSfJ-7JfcGwN5NmAbdkuhmG82bZck4jDc8V_2ZFAsyeJHFfJfw/viewform",
+      image: "/images/sponsor1.jpg",
     },
     {
       id: 2,
-      url: "",
-      image: "/images/poster5.png",
+      url: "https://enugrp.com/",
+      image: "/images/sponsor2.jpg",
     },
     {
       id: 3,
-      url: "",
-      image: "/images/poster8.png",
+      url: "https://www.instagram.com/globalstudylink.co/?hl=en",
+      image: "/images/sponsor3.jpg",
     },
     {
       id: 4,
-      url: "",
-      image: "/images/poster2.jpg",
+      url: "https://www.honda2wheelersindia.com/",
+      image: "/images/sponsor4.jpg",
     },
     {
       id: 5,
-      url: "",
-      image: "/images/poster7.jpg",
+      url: "https://www.instagram.com/max_life_insurance/",
+      image: "/images/sponsor5.jpg",
     },
     {
       id: 6,
-      url: "",
-      image: "/images/poster10.jpg",
-    },
-    {
-      id: 7,
-      url: "",
-      image: "/images/poster6.jpg",
-    },
-   
-    {
-      id: 8,
-      url: "",
-      image: "/images/poster9.png",
-    },
-    {
-      id: 9,
-      url: "",
-      image: "/images/poster4.jpg",
-    },
-    {
-      id: 10,
-      url: "",
-      image: "/images/poster3.jpg",
-    },
-    {
-      id: 11,
-      url: "",
-      image: "/images/poster3.jpg",
+      url: "https://www.instagram.com/studioclickzone/",
+      image: "/images/sponsor6.jpg",
     },
   ];
   
