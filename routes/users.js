@@ -55,17 +55,21 @@ const onlinecrime = require("../models/events/online/crimeInvestigation");
 
 //trivia 
 const onlinetrivia=require('../models/events/online/trivia')
-const spottrivia=require('../models/events/spot/trivia')
+const spottrivia=require('../models/events/spot/trivia');
+const adminModel = require("../models/users/admin");
 
 /* GET users listing. */
-router.get("/", function (req, res, next) {
+router.get("/",function (req, res, next) {
+
   res.render("event", {
     posters: posters,
   });
 });
 
-router.get("/:event/registration", (req, res) => {
-  res.render("registration");
+router.get("/:event/registration", async(req, res) => {
+  const admin=await adminModel.findOne({});
+
+  res.render("registration",{online:admin.dataValues.online});
 });
 
 router.get("/:event/online", (req, res) => {

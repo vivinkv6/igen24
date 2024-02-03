@@ -34,7 +34,7 @@ img {
 }
 
 .btn {
-  width: 75%;
+  width: 35%;
   background-color: white;
   box-shadow: 0px 0px 7px rgb(194, 215, 8);
   font-family: "Ubuntu Condensed", sans-serif;
@@ -70,11 +70,20 @@ img {
   left: 25%;
 }
 
-
-
 @media screen and (max-width: 500px) {
   img {
     width: 250px;
     height: 350px;
   }
+
+  .primary {
+    height: 40px;
+    font-size: 15px;
+    width: 40%;
+  }
+}
+
+
+@media screen and (max-width:350px) {
+  
 }

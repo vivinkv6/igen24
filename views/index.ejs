@@ -29,7 +29,7 @@
         <li><a href="/">Home</a></li>
         <li><a href="/events">Events</a></li>
         <li>Sponsors</li>
-        <li>Location</li>
+        <li><a href="/location">Location</a></li>
       </div>
     </nav>
 
@@ -71,7 +71,7 @@
             <li><a href="/">Home</a></li>
         <li><a href="/events">Events</a></li>
             <li>Sponsors</li>
-            <li>Location</li>
+            <li><a href="/location">Location</a></li>
           </div>
         </div>
         </div>
@@ -84,7 +84,7 @@
         <!-- <video src="/images/banner.mp4" class="video" autoplay loop controls=""></video> -->
       </div>
     </div>
-    <div class="content">
+    <div class="content" id="content1">
       <h1
         class="header"
         data-aos="fade-up"
@@ -103,13 +103,13 @@
         technology. <br />
         Join the revolution – register now for an unforgettable journey of
         challenges, prizes, and boundless innovation! " -->
-        <div class="countdown-container" 
+        <div class="countdown-container" id="counter"
         data-aos="fade-in"
         data-aos-delay="3000"
         data-aos-duration="3000"
         >
        
-          <div class="countdown-item">
+          <div class="countdown-item" >
             <div class="countdown-number" id="days">12</div>
             <div class="countdown-label">Days</div>
           </div>
@@ -143,32 +143,83 @@
       </center>
     </div>
 
-
-
-    <!-- HTML structure remains the same -->
-
+   
+    <script src="/javascripts/confetti.js"></script>
+    <!-- Confetti  JS-->
+   
     <script>
       // Function to update the countdown based on the remaining time from the backend
+      let day=document.getElementById('days');
+      let hour=document.getElementById('hours');
+      let minute=document.getElementById('minutes');
+      let second= document.getElementById('seconds');
+
       function updateCountdown() {
-        fetch('/time')
-          .then(response => response.json())
-          .then(data => {
+    fetch('/time')
+        .then(response => response.json())
+        .then(data => {
             // Update the HTML with the remaining time
-            document.getElementById('days').textContent = data.remainingDays;
-            document.getElementById('hours').textContent = data.remainingHours;
-            document.getElementById('minutes').textContent = data.remainingMinutes;
-            document.getElementById('seconds').textContent = data.remainingSeconds;
-          })
-          .catch(error => console.error('Error fetching remaining time:', error));
-      }
-    
-      // Initial update
-      updateCountdown();
-    
-      // Update every second
-      setInterval(() => {
-        updateCountdown();
-      }, 1000);
+          
+
+            // Check if the remaining time is zero
+            if (data.remainingDays === 0 && data.remainingHours === 0 && data.remainingMinutes === 0 && data.remainingSeconds === 0) {
+             
+                // Set the HTML elements to zero
+            day.textContent = 0;
+            hour.textContent = 0;
+            minute.textContent = 0;
+            second.textContent = 0;
+                // Clear the interval
+                clearInterval(interval);
+
+                const start = () => {
+            setTimeout(function() {
+                confetti.start()
+            }, 1000); // 1000 is time that after 1 second start the confetti ( 1000 = 1 sec)
+        };
+
+        //  Stop
+
+        const stop = () => {
+            setTimeout(function() {
+                confetti.stop()
+            }, 5000); // 5000 is time that after 5 second stop the confetti ( 5000 = 5 sec)
+        };
+
+        start();
+        stop();
+
+            }
+           else if (data.remainingDays <0 && data.remainingHours < 0 && data.remainingMinutes < 0 && data.remainingSeconds < 0) {
+            
+             
+             // Set the HTML elements to zero
+            day.textContent = 0;
+            hour.textContent = 0;
+            minute.textContent = 0;
+            second.textContent = 0;
+
+             // Clear the interval
+             clearInterval(interval);
+
+          
+             
+         }
+            else{
+              day.textContent = data.remainingDays;
+            hour.textContent = data.remainingHours;
+            minute.textContent = data.remainingMinutes;
+            second.textContent = data.remainingSeconds;
+            }
+        })
+        .catch(error => console.error('Error fetching remaining time:', error));
+}
+
+const interval = setInterval(() => {
+    updateCountdown();
+}, 1000);
+
+
     </script>
 
 

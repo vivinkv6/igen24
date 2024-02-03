@@ -11,6 +11,7 @@ var usersRouter = require("./routes/users");
 var adminRouter=require('./routes/admin/adminRoutes');
 var verifierRouter=require('./routes/verifier/verifierRoute');
 var sponsorRouter=require('./routes/sponsors');
+var locationRouter=require('./routes/location');
 
 var app = express();
 
@@ -29,6 +30,7 @@ app.use("/events", usersRouter);
 app.use('/sponsors',sponsorRouter);
 app.use("/admin",adminRouter);
 app.use("/verifier",verifierRouter);
+app.use("/location",locationRouter);
 
 
 // catch 404 and forward to error handler

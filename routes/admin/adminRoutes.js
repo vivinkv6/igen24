@@ -36,6 +36,9 @@ const onlineband = require("../../models/events/online/musicBand");
 const spotchoreography = require("../../models/events/spot/choreography");
 const onlinechoreography = require("../../models/events/online/choreography");
 
+const spottrivia = require("../../models/events/spot/trivia");
+const onlinetrivia = require("../../models/events/online/trivia");
+
 const verifierLogin = require("../../models/users/verifier");
 
 const router = express.Router();
@@ -56,7 +59,7 @@ router.get("/login", async (req, res) => {
       // res.redirect(`/admin/dashboard`);
       res.redirect("/admin/dashboard");
     } else {
-      res.render(`admin/login`,{
+      res.render(`admin/login`, {
         emailExist: true,
         passwordError: false,
         email: "",
@@ -186,20 +189,37 @@ router.post("/signup", async (req, res) => {
             });
             //   res.redirect("/admin/dashboard");
             res.redirect("/admin/dashboard");
-          }).catch((err)=>{
-            res.json({err:err})
           })
+          .catch((err) => {
+            res.json({ err: err });
+          });
       }
     });
   }
 });
 
 router.get("/dashboard", async (req, res) => {
+  const { online } = req.query;
+  console.log(online);
   if (req.cookies.admin) {
     const adminId = jwt.verify(req.cookies.admin, process.env.JWT_SECRET_TOKEN);
-    const findAdmin = await adminlogin.findByPk(adminId);
+    let findAdmin = await adminlogin.findByPk(adminId);
     if (findAdmin) {
-      res.render("admin/dashboard", { events: registrationAction });
+      if (online !== undefined) {
+        const updateAdmin=await findAdmin.update({
+          online:online,
+          id:findAdmin.dataValues.id
+        })
+       
+        console.log(findAdmin.dataValues.online);
+        res.render("admin/dashboard", {
+          onlineRegistration: findAdmin.dataValues.online,
+        });
+      } else {
+        res.render("admin/dashboard", {
+          onlineRegistration: findAdmin.dataValues.online,
+        });
+      }
     } else {
       res.clearCookie("admin");
       res.redirect("/admin/login");
@@ -370,7 +390,23 @@ router.get("/dashboard/events", async (req, res) => {
           name: "Online Registration",
           event_name: "Reconcile",
         });
-      } else if (category == undefined && event == undefined) {
+      } else if (category == "spot" && event == "trivia") {
+        const online = await spottrivia.findAll({});
+        res.render("admin/codex", {
+          event: online,
+          name: "Spot Registration",
+          event_name: "Trivia Fiesta",
+        });
+      } else if (category == "online" && event == "trivia") {
+        const online = await onlinetrivia.findAll({});
+        res.render("admin/codex", {
+          event: online,
+          name: "Online Registration",
+          event_name: "Trivia Fiesta",
+        });
+      }
+      
+      else if (category == undefined && event == undefined) {
         const spot = await spotCodex.findAll({});
         res.render("admin/codex", {
           event: spot,
@@ -463,21 +499,20 @@ router.post("/dashboard/team/create", async (req, res) => {
         confirm: confirm,
       });
     } else {
-      const hashPassword=bycrypt.hash(password,12).then(async(hash)=>{
+      const hashPassword = bycrypt.hash(password, 12).then(async (hash) => {
         const addVerifier = await verifierLogin
-        .create({
-          username: email?.split("@")[0],
-          email: email,
-          password: hash,
-        })
-        .then(() => {
-          res.redirect("/admin/dashboard/team");
-        })
-        .catch((err) => {
-          res.json({ err: err.message });
-        });
-      })
-      
+          .create({
+            username: email?.split("@")[0],
+            email: email,
+            password: hash,
+          })
+          .then(() => {
+            res.redirect("/admin/dashboard/team");
+          })
+          .catch((err) => {
+            res.json({ err: err.message });
+          });
+      });
     }
   }
 });
