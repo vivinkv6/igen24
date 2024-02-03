@@ -16,21 +16,6 @@ body {
 img {
   height: 200px;
   width: 400px;
-  border: 0.5px solid var(--secondary);
-  box-shadow: 0px 0px 10px rgb(128, 244, 135),
-    inset 0px 0px 10px rgb(93, 162, 15), inset 0px 0px 10px rgb(82, 234, 105),
-    inset 0px 0px 10px rgb(129, 225, 84), inset 0px 0px 10px rgb(60, 222, 138),
-    inset 0px 0px 10px rgb(113, 237, 30);
-  background-image: linear-gradient(
-    to right bottom,
-    rgb(128, 244, 135),
-    rgb(93, 162, 15),
-    rgb(82, 234, 105),
-    rgb(129, 225, 84),
-    rgb(60, 222, 138),
-    rgb(113, 237, 30)
-  );
-
   padding: 1px;
 }
 
