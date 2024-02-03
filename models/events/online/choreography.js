@@ -23,6 +23,10 @@ const choreography = sequelizeConfig.define("onlinechoreography", {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  mobile:{
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
   transactionid: {
     type: DataTypes.STRING,
     allowNull:false,

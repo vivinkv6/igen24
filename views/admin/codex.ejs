@@ -82,6 +82,7 @@
                 <th class="text-dark">Email</th>
                 <th class="text-dark">College</th>
                 <th class="text-dark">Department</th>
+                <th class="text-dark">Mobile</th>
                 <% if(event[0].dataValues.transactionid){ %>
                 <th class="text-dark">TransactionID</th>
                 <th class="text-dark">Payment</th>
@@ -99,6 +100,7 @@
                 <td><%= event[i].dataValues.email %></td>
                 <td><%= event[i].dataValues.college %></td>
                 <td><%= event[i].dataValues.department %></td>
+                <td><%= event[i].dataValues.mobile %></td>
                 <% if(event[i].dataValues.transactionid){ %>
                 <td><%= event[i].dataValues.transactionid %></td>
                 <td> <a href="<%= event[i].dataValues.payment %>" target="_blank" ><img src="<%= event[i].dataValues.payment %>" height="300" width="200" alt=""></a> </td>

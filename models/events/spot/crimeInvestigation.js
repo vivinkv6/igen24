@@ -23,6 +23,10 @@ const crimeInvestigation = sequelizeConfig.define("spotci", {
     type: DataTypes.ARRAY(DataTypes.STRING),
     allowNull: false,
   },
+  mobile:{
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
 });
 
 

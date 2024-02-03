@@ -23,6 +23,10 @@ const reconcile= sequelizeConfig.define("onlineReconcile", {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  mobile:{
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
   transactionid: {
     type: DataTypes.STRING,
     allowNull:false,

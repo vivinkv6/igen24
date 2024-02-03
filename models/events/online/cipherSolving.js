@@ -22,6 +22,10 @@ const cipher = sequelizeConfig.define("onlinecipher", {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  mobile:{
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
   transactionid: {
     type: DataTypes.STRING,
     allowNull:false,

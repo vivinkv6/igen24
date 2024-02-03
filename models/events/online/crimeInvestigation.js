@@ -28,6 +28,10 @@ const crimeInvestigation = sequelizeConfig.define("onlineci", {
     allowNull:false,
     unique:true
   },
+  mobile:{
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
   payment: {
     type: DataTypes.STRING,
     allowNull: false,

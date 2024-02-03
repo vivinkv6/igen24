@@ -23,6 +23,10 @@ const mobileGaming= sequelizeConfig.define("spotgaming", {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  mobile:{
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
 
 });
 

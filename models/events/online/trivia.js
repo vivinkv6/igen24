@@ -23,6 +23,10 @@ const trivia = sequelizeConfig.define("onlinetrivia", {
     type: DataTypes.ARRAY(DataTypes.STRING),
     allowNull: true,
   },
+  mobile:{
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
   transactionid: {
     type: DataTypes.STRING,
     allowNull:false,

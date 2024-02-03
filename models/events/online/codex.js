@@ -23,6 +23,10 @@ const codex = sequelizeConfig.define("onlinecodex", {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  mobile:{
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
   transactionid: {
     type: DataTypes.STRING,
     allowNull:false,

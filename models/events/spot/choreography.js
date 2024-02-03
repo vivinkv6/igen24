@@ -23,6 +23,10 @@ const choreography = sequelizeConfig.define("spotchoreography", {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  mobile:{
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
 });
 
 module.exports = choreography;

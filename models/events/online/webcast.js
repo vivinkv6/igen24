@@ -28,6 +28,10 @@ const webCast= sequelizeConfig.define("onlineWebcast", {
     allowNull:false,
     unique:true
   },
+  mobile:{
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
   payment: {
     type: DataTypes.STRING,
     allowNull: false,

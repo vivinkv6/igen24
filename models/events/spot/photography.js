@@ -23,6 +23,10 @@ const photography= sequelizeConfig.define("spotPhotographpy", {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  mobile:{
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
 });
 
 

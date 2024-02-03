@@ -23,6 +23,10 @@ const cipher = sequelizeConfig.define("spotcipher", {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  mobile:{
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
 });
 
 module.exports = cipher;

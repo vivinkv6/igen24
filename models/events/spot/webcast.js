@@ -22,7 +22,11 @@ const webCast= sequelizeConfig.define("spotWebcast", {
   department: {
     type: DataTypes.STRING,
     allowNull: false,
-  }
+  },
+  mobile:{
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
 });
 
 

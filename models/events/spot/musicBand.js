@@ -23,6 +23,10 @@ const band= sequelizeConfig.define("spotBand", {
     type: DataTypes.ARRAY(DataTypes.STRING),
     allowNull: false,
   },
+  mobile:{
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
 
 });
 

@@ -23,6 +23,10 @@ const codex = sequelizeConfig.define("spotcodex", {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  mobile:{
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
 });
 
 

@@ -23,6 +23,10 @@ const trivia = sequelizeConfig.define("spottrivia", {
     type: DataTypes.ARRAY(DataTypes.STRING),
     allowNull: true,
   },
+  mobile:{
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
 });
 
 

@@ -144,7 +144,7 @@ router.get("/codex/registration/spot", (req, res) => {
 //POST codex spot registration
 
 router.post("/codex/registration/spot", async (req, res) => {
-  const { name, email, department, college } = req.body;
+  const { name, email, department, college,mobile } = req.body;
   const spotLen = await spotCodex.count();
   const onlineLen = await onlineCodex.count();
   const len = spotLen + onlineLen;
@@ -156,6 +156,7 @@ router.post("/codex/registration/spot", async (req, res) => {
       college: college,
       email: email,
       department: department,
+      mobile:mobile
     })
     .then((data) => {
       res.render("events/message", {
@@ -166,6 +167,7 @@ router.post("/codex/registration/spot", async (req, res) => {
         department: data.dataValues.department,
         event: "CODEX",
         online: false,
+        mobile:mobile
       });
     })
     .catch((err) => {
@@ -186,7 +188,7 @@ router.post(
     const spotLen = await spotCodex.count();
     const onlineLen = await onlineCodex.count();
     const len = spotLen + onlineLen;
-    const { name, email, college, department, transaction } = req.body;
+    const { name, email, college, department, transaction,mobile } = req.body;
     const fileBuffer = req.file.buffer.toString("base64");
     const fileUpload = await cloudinaryConfig.uploader.upload(
       `data:image/png;base64,${fileBuffer}`,
@@ -206,6 +208,7 @@ router.post(
         department: department,
         transactionid: transaction,
         payment: fileUpload.secure_url,
+        mobile:mobile
       })
       .then((data) => {
         res.render("events/message", {
@@ -217,6 +220,7 @@ router.post(
           transaction: data.dataValues.transactionid,
           online: true,
           event: "CODEX",
+          mobile:mobile
         });
       })
       .catch((err) => {
@@ -235,7 +239,7 @@ router.get("/photography/registration/spot", (req, res) => {
 });
 
 router.post("/photography/registration/spot", async (req, res) => {
-  const { name, email, department, college } = req.body;
+  const { name, email, department, college, mobile } = req.body;
   const spotLen = await spotPhotography.count();
   const onlineLen = await onlinePhotography.count();
   const len = spotLen + onlineLen;
@@ -247,6 +251,7 @@ router.post("/photography/registration/spot", async (req, res) => {
       college: college,
       email: email,
       department: department,
+      mobile:mobile
     })
     .then((data) => {
       res.render("events/message", {
@@ -257,6 +262,7 @@ router.post("/photography/registration/spot", async (req, res) => {
         department: data.dataValues.department,
         event: "CLICK",
         online: false,
+        mobile:mobile
       });
     })
     .catch((err) => {
@@ -277,7 +283,7 @@ router.post(
     const spotLen = await spotPhotography.count();
     const onlineLen = await onlinePhotography.count();
     const len = spotLen + onlineLen;
-    const { name, email, college, department, transaction } = req.body;
+    const { name, email, college, department, transaction,mobile } = req.body;
     const fileBuffer = req.file.buffer.toString("base64");
     const fileUpload = await cloudinaryConfig.uploader.upload(
       `data:image/png;base64,${fileBuffer}`,
@@ -297,6 +303,7 @@ router.post(
         department: department,
         transactionid: transaction,
         payment: fileUpload.secure_url,
+        mobile:mobile
       })
       .then((data) => {
         res.render("events/message", {
@@ -308,6 +315,7 @@ router.post(
           transaction: data.dataValues.transactionid,
           event: "CLICK",
           online: true,
+          mobile:mobile
         });
       })
       .catch((err) => {
@@ -325,7 +333,7 @@ router.get("/reconcile/registration/spot", (req, res) => {
 });
 
 router.post("/reconcile/registration/spot", async (req, res) => {
-  const { name, email, department, college } = req.body;
+  const { name, email, department, college, mobile } = req.body;
   const spotLen = await spotReconcile.count();
   const onlineLen = await onlineReconcile.count();
   const len = spotLen + onlineLen;
@@ -337,6 +345,7 @@ router.post("/reconcile/registration/spot", async (req, res) => {
       college: college,
       email: email,
       department: department,
+      mobile:mobile
     })
     .then((data) => {
       res.render("events/message", {
@@ -347,6 +356,7 @@ router.post("/reconcile/registration/spot", async (req, res) => {
         department: data.dataValues.department,
         event: "RECONCILE",
         online: false,
+        mobile:mobile
       });
     })
     .catch((err) => {
@@ -367,7 +377,7 @@ router.post(
     const spotLen = await spotReconcile.count();
     const onlineLen = await onlineReconcile.count();
     const len = spotLen + onlineLen;
-    const { name, email, college, department, transaction } = req.body;
+    const { name, email, college, department, transaction,mobile } = req.body;
     const fileBuffer = req.file.buffer.toString("base64");
     const fileUpload = await cloudinaryConfig.uploader.upload(
       `data:image/png;base64,${fileBuffer}`,
@@ -387,6 +397,7 @@ router.post(
         department: department,
         transactionid: transaction,
         payment: fileUpload.secure_url,
+        mobile:mobile
       })
       .then((data) => {
         res.render("events/message", {
@@ -398,6 +409,7 @@ router.post(
           transaction: data.dataValues.transactionid,
           event: "RECONCILE",
           online: true,
+          mobile:mobile
         });
       })
       .catch((err) => {
@@ -416,7 +428,7 @@ router.get("/gaming/registration/spot", (req, res) => {
 });
 
 router.post("/gaming/registration/spot", async (req, res) => {
-  const { name, email, department, college } = req.body;
+  const { name, email, department, college, mobile } = req.body;
   const spotLen = await spotGaming.count();
   const onlineLen = await onlineGaming.count();
   const len = spotLen + onlineLen;
@@ -428,6 +440,7 @@ router.post("/gaming/registration/spot", async (req, res) => {
       college: college,
       email: email,
       department: department,
+      mobile:mobile
     })
     .then((data) => {
       res.render("events/message", {
@@ -438,6 +451,7 @@ router.post("/gaming/registration/spot", async (req, res) => {
         department: data.dataValues.department,
         event: "Mobile Gaming",
         online: false,
+        mobile:mobile
       });
     })
     .catch((err) => {
@@ -457,7 +471,7 @@ router.post(
     const spotLen = await spotGaming.count();
     const onlineLen = await onlineGaming.count();
     const len = spotLen + onlineLen;
-    const { name, email, college, department, transaction } = req.body;
+    const { name, email, college, department, transaction, mobile } = req.body;
     const fileBuffer = req.file.buffer.toString("base64");
     const fileUpload = await cloudinaryConfig.uploader.upload(
       `data:image/png;base64,${fileBuffer}`,
@@ -477,6 +491,7 @@ router.post(
         department: department,
         transactionid: transaction,
         payment: fileUpload.secure_url,
+        mobile:mobile
       })
       .then((data) => {
         res.render("events/message", {
@@ -488,6 +503,7 @@ router.post(
           transaction: data.dataValues.transactionid,
           event: "Mobile Gaming",
           online: true,
+          mobile:mobile
         });
       })
       .catch((err) => {
@@ -506,7 +522,7 @@ router.get("/webcast/registration/spot", (req, res) => {
 });
 
 router.post("/webcast/registration/spot", async (req, res) => {
-  const { name, email, department, college } = req.body;
+  const { name, email, department, college, mobile } = req.body;
   const spotLen = await spotweb.count();
   const onlineLen = await onlineweb.count();
   const len = spotLen + onlineLen;
@@ -518,6 +534,7 @@ router.post("/webcast/registration/spot", async (req, res) => {
       college: college,
       email: email,
       department: department,
+      mobile:mobile
     })
     .then((data) => {
       res.render("events/message", {
@@ -528,6 +545,7 @@ router.post("/webcast/registration/spot", async (req, res) => {
         department: data.dataValues.department,
         event: "WEBCAST",
         online: false,
+        mobile:mobile
       });
     })
     .catch((err) => {
@@ -546,7 +564,7 @@ router.post(
     const spotLen = await spotweb.count();
     const onlineLen = await onlineweb.count();
     const len = spotLen + onlineLen;
-    const { name, email, college, department, transaction } = req.body;
+    const { name, email, college, department, transaction, mobile } = req.body;
     const fileBuffer = req.file.buffer.toString("base64");
     const fileUpload = await cloudinaryConfig.uploader.upload(
       `data:image/png;base64,${fileBuffer}`,
@@ -566,6 +584,7 @@ router.post(
         department: department,
         transactionid: transaction,
         payment: fileUpload.secure_url,
+        mobile:mobile
       })
       .then((data) => {
         res.render("events/message", {
@@ -577,6 +596,7 @@ router.post(
           transaction: data.dataValues.transactionid,
           online: true,
           event: "WEBCAST",
+          mobile:mobile
         });
       })
       .catch((err) => {
@@ -595,7 +615,7 @@ router.get("/itquiz/registration/spot", (req, res) => {
 });
 
 router.post("/itquiz/registration/spot", async (req, res) => {
-  const { name, email, department, college } = req.body;
+  const { name, email, department, college, mobile } = req.body;
   console.log(name);
   const spotLen = await spotquiz.count();
   const onlineLen = await onlinequiz.count();
@@ -608,6 +628,7 @@ router.post("/itquiz/registration/spot", async (req, res) => {
       college: college,
       email: [email],
       department: [department],
+      mobile:mobile
     })
     .then((data) => {
       res.render("events/message", {
@@ -618,6 +639,7 @@ router.post("/itquiz/registration/spot", async (req, res) => {
         department: data.dataValues.department,
         event: "IT BUZZ",
         online: false,
+        mobile:mobile
       });
     })
     .catch((err) => {
@@ -634,7 +656,7 @@ router.post(
   "/itquiz/registration/online",
   upload.single("payment"),
   async (req, res) => {
-    const { name, email, department, college, transaction } = req.body;
+    const { name, email, department, college, transaction, mobile } = req.body;
     console.log(name);
     const spotLen = await spotquiz.count();
     const onlineLen = await onlinequiz.count();
@@ -659,6 +681,7 @@ router.post(
         department: [department],
         transactionid: transaction,
         payment: fileUpload.secure_url,
+        mobile:mobile
       })
       .then((data) => {
         res.render("events/message", {
@@ -670,6 +693,7 @@ router.post(
           event: "IT BUZZ",
           transaction: data.dataValues.transactionid,
           online: true,
+          mobile:mobile
         });
       })
       .catch((err) => {
@@ -692,7 +716,7 @@ router.get("/trivia/registration/spot", (req, res) => {
 });
 
 router.post("/trivia/registration/spot", async (req, res) => {
-  const { name, email, department, college } = req.body;
+  const { name, email, department, college,mobile } = req.body;
   console.log(name);
   const spotLen = await spottrivia.count();
   const onlineLen = await onlinetrivia.count();
@@ -705,6 +729,7 @@ router.post("/trivia/registration/spot", async (req, res) => {
       college: college,
       email: [email],
       department: [department],
+      mobile:mobile
     })
     .then((data) => {
       res.render("events/message", {
@@ -715,6 +740,7 @@ router.post("/trivia/registration/spot", async (req, res) => {
         department: data.dataValues.department,
         event: "Trivia Fiesta",
         online: false,
+        mobile:mobile
       });
     })
     .catch((err) => {
@@ -731,7 +757,7 @@ router.post(
   "/trivia/registration/online",
   upload.single("payment"),
   async (req, res) => {
-    const { name, email, department, college, transaction } = req.body;
+    const { name, email, department, college, transaction, mobile } = req.body;
     console.log(name);
     const spotLen = await spottrivia.count();
     const onlineLen = await onlinetrivia.count();
@@ -756,6 +782,7 @@ router.post(
         department: [department],
         transactionid: transaction,
         payment: fileUpload.secure_url,
+        mobile:mobile
       })
       .then((data) => {
         res.render("events/message", {
@@ -767,6 +794,7 @@ router.post(
           event: "Trivia Fiesta",
           transaction: data.dataValues.transactionid,
           online: true,
+          mobile:mobile
         });
       })
       .catch((err) => {
@@ -787,7 +815,7 @@ router.get("/cipher/registration/spot", (req, res) => {
 });
 
 router.post("/cipher/registration/spot", async (req, res) => {
-  const { name, email, department, college } = req.body;
+  const { name, email, department, college,mobile } = req.body;
   console.log(name);
   const spotLen = await spotcipher.count();
   const onlineLen = await onlinecipher.count();
@@ -800,6 +828,7 @@ router.post("/cipher/registration/spot", async (req, res) => {
       college: college,
       email: email,
       department: department,
+      mobile:mobile
     })
     .then((data) => {
       res.render("events/message", {
@@ -810,6 +839,7 @@ router.post("/cipher/registration/spot", async (req, res) => {
         department: data.dataValues.department,
         event: "Crack The Cipher",
         online: false,
+        mobile:mobile
       });
     })
     .catch((err) => {
@@ -830,7 +860,7 @@ router.post(
     const spotLen = await spotcipher.count();
     const onlineLen = await onlinecipher.count();
     const len = spotLen + onlineLen;
-    const { name, email, college, department, transaction } = req.body;
+    const { name, email, college, department, transaction, mobile } = req.body;
     const fileBuffer = req.file.buffer.toString("base64");
     const fileUpload = await cloudinaryConfig.uploader.upload(
       `data:image/png;base64,${fileBuffer}`,
@@ -850,6 +880,7 @@ router.post(
         department: department,
         transactionid: transaction,
         payment: fileUpload.secure_url,
+        mobile:mobile
       })
       .then((data) => {
         res.render("events/message", {
@@ -861,6 +892,7 @@ router.post(
           transaction: data.dataValues.transactionid,
           event: "Crack The Cipher",
           online: true,
+          mobile:mobile
         });
       })
       .catch((err) => {
@@ -879,7 +911,7 @@ router.get("/choreography/registration/spot", (req, res) => {
 });
 
 router.post("/choreography/registration/spot", async (req, res) => {
-  const { name, email, department, college } = req.body;
+  const { name, email, department, college, mobile } = req.body;
   const spotLen = await spotchoreography.count();
   const onlineLen = await onlinechoreography.count();
   const len = spotLen + onlineLen;
@@ -891,6 +923,7 @@ router.post("/choreography/registration/spot", async (req, res) => {
       college: college,
       email: email,
       department: department,
+      mobile:mobile
     })
     .then((data) => {
       res.render("events/message", {
@@ -901,6 +934,7 @@ router.post("/choreography/registration/spot", async (req, res) => {
         department: data.dataValues.department,
         event: "Spot Choreography",
         online: false,
+        mobile:mobile
       });
     })
     .catch((err) => {
@@ -921,7 +955,7 @@ router.post(
     const spotLen = await spotchoreography.count();
     const onlineLen = await onlinechoreography.count();
     const len = spotLen + onlineLen;
-    const { name, email, college, department, transaction } = req.body;
+    const { name, email, college, department, transaction, mobile } = req.body;
     const fileBuffer = req.file.buffer.toString("base64");
     const fileUpload = await cloudinaryConfig.uploader.upload(
       `data:image/png;base64,${fileBuffer}`,
@@ -941,6 +975,7 @@ router.post(
         department: department,
         transactionid: transaction,
         payment: fileUpload.secure_url,
+        mobile:mobile
       })
       .then((data) => {
         res.render("events/message", {
@@ -952,6 +987,7 @@ router.post(
           transaction: data.dataValues.transactionid,
           event: "Spot Choreography",
           online: true,
+          mobile:mobile
         });
       })
       .catch((err) => {
@@ -970,7 +1006,7 @@ router.get("/band/registration/spot", (req, res) => {
 });
 
 router.post("/band/registration/spot", async (req, res) => {
-  const { name, email, department, college } = req.body;
+  const { name, email, department, college, mobile } = req.body;
   console.log(req.body);
   const spotLen = await spotband.count();
   const onlineLen = await onlineband.count();
@@ -983,6 +1019,7 @@ router.post("/band/registration/spot", async (req, res) => {
       college: college,
       email: [email],
       department: [department],
+      mobile:mobile
     })
     .then((data) => {
       res.render("events/message", {
@@ -993,6 +1030,7 @@ router.post("/band/registration/spot", async (req, res) => {
         department: data.dataValues.department,
         event: "Music Band",
         online: false,
+        mobile:mobile
       });
     })
     .catch((err) => {
@@ -1013,7 +1051,7 @@ router.post(
     const spotLen = await spotband.count();
     const onlineLen = await onlineband.count();
     const len = spotLen + onlineLen;
-    const { name, email, college, department, transaction } = req.body;
+    const { name, email, college, department, transaction,mobile } = req.body;
     const fileBuffer = req.file.buffer.toString("base64");
     const fileUpload = await cloudinaryConfig.uploader.upload(
       `data:image/png;base64,${fileBuffer}`,
@@ -1034,6 +1072,7 @@ router.post(
         department: [department],
         transactionid: transaction,
         payment: fileUpload.secure_url,
+        mobile:mobile
       })
       .then((data) => {
         res.render("events/message", {
@@ -1045,6 +1084,7 @@ router.post(
           transaction: data.dataValues.transactionid,
           event: "Music Band",
           online: true,
+          mobile:mobile
         });
       })
       .catch((err) => {
@@ -1063,7 +1103,7 @@ router.get("/football/registration/spot", (req, res) => {
 });
 
 router.post("/football/registration/spot", async (req, res) => {
-  const { name, email, department, college } = req.body;
+  const { name, email, department, college, mobile } = req.body;
   console.log(req.body);
   const spotLen = await spotfootball.count();
   const onlineLen = await onlinefootball.count();
@@ -1076,6 +1116,7 @@ router.post("/football/registration/spot", async (req, res) => {
       college: college,
       email: [email],
       department: [department],
+      mobile:mobile
     })
     .then((data) => {
       res.render("events/message", {
@@ -1086,6 +1127,7 @@ router.post("/football/registration/spot", async (req, res) => {
         department: data.dataValues.department,
         event: "Football",
         online: false,
+        mobile:mobile
       });
     })
     .catch((err) => {
@@ -1106,7 +1148,7 @@ router.post(
     const spotLen = await spotfootball.count();
     const onlineLen = await onlinefootball.count();
     const len = spotLen + onlineLen;
-    const { name, email, college, department, transaction } = req.body;
+    const { name, email, college, department, transaction, mobile } = req.body;
     const fileBuffer = req.file.buffer.toString("base64");
     const fileUpload = await cloudinaryConfig.uploader.upload(
       `data:image/png;base64,${fileBuffer}`,
@@ -1127,6 +1169,7 @@ router.post(
         department: [department],
         transactionid: transaction,
         payment: fileUpload.secure_url,
+        mobile:mobile
       })
       .then((data) => {
         res.render("events/message", {
@@ -1138,6 +1181,7 @@ router.post(
           transaction: data.dataValues.transactionid,
           event: "Football",
           online: true,
+          mobile:mobile
         });
       })
       .catch((err) => {
@@ -1156,7 +1200,7 @@ router.get("/crimeinvestigation/registration/spot", (req, res) => {
 });
 
 router.post("/crimeinvestigation/registration/spot", async (req, res) => {
-  const { name, email, department, college } = req.body;
+  const { name, email, department, college, mobile } = req.body;
   console.log(req.body);
   const spotLen = await spotcrime.count();
   const onlineLen = await onlinecrime.count();
@@ -1169,6 +1213,7 @@ router.post("/crimeinvestigation/registration/spot", async (req, res) => {
       college: college,
       email: [email],
       department: [department],
+      mobile:mobile
     })
     .then((data) => {
       res.render("events/message", {
@@ -1179,6 +1224,7 @@ router.post("/crimeinvestigation/registration/spot", async (req, res) => {
         department: data.dataValues.department,
         event: "Crime Investigation",
         online: false,
+        mobile:mobile
       });
     })
     .catch((err) => {
@@ -1199,7 +1245,7 @@ router.post(
     const spotLen = await spotcrime.count();
     const onlineLen = await onlinecrime.count();
     const len = spotLen + onlineLen;
-    const { name, email, college, department, transaction } = req.body;
+    const { name, email, college, department, transaction, mobile } = req.body;
     const fileBuffer = req.file.buffer.toString("base64");
     const fileUpload = await cloudinaryConfig.uploader.upload(
       `data:image/png;base64,${fileBuffer}`,
@@ -1220,6 +1266,7 @@ router.post(
         department: [department],
         transactionid: transaction,
         payment: fileUpload.secure_url,
+        mobile:mobile
       })
       .then((data) => {
         console.log(data);
@@ -1232,6 +1279,7 @@ router.post(
           transaction: data.dataValues.transactionid,
           event: "Crime Investigation",
           online: true,
+          mobile:mobile
         });
       })
       .catch((err) => {

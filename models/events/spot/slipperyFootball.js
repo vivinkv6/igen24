@@ -23,6 +23,10 @@ const slipperyFootball= sequelizeConfig.define("spotFootball", {
     type: DataTypes.ARRAY(DataTypes.STRING),
     allowNull: false,
   },
+  mobile:{
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
 });
 
 

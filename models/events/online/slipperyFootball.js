@@ -23,6 +23,10 @@ const slipperyFootball= sequelizeConfig.define("onlineFootball", {
     type: DataTypes.ARRAY(DataTypes.STRING),
     allowNull: false,
   },
+  mobile:{
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
   transactionid: {
     type: DataTypes.STRING,
     allowNull:false,

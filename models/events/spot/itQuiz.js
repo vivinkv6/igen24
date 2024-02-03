@@ -23,6 +23,10 @@ const itQuiz = sequelizeConfig.define("spotquiz", {
     type: DataTypes.ARRAY(DataTypes.STRING),
     allowNull: true,
   },
+  mobile:{
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
 });
 
 

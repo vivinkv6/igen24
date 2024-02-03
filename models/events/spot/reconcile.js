@@ -23,6 +23,10 @@ const reconcile= sequelizeConfig.define("spotReconcile", {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  mobile:{
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
 });
 
 
