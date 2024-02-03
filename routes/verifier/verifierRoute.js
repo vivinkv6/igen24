@@ -40,6 +40,9 @@ const onlineband = require("../../models/events/online/musicBand");
 const spotchoreography = require("../../models/events/spot/choreography");
 const onlinechoreography = require("../../models/events/online/choreography");
 
+const spottrivia = require("../../models/events/spot/trivia");
+const onlinetrivia = require("../../models/events/online/trivia");
+
 router.get("/login", async (req, res) => {
   /* This code block is checking if there is already an existing admin account in the database. */
   if (req.cookies.verifier) {
@@ -53,6 +56,7 @@ router.get("/login", async (req, res) => {
       // res.redirect(`/admin/dashboard`);
       res.redirect("/verifier/dashboard");
     } else {
+      res.clearCookie("verifier");
       res.render(`verifier/login`, {
         emailExist: true,
         passwordError: false,
@@ -290,6 +294,20 @@ router.get("/dashboard", async (req, res) => {
           name: "Online Registration",
           event_name: "Reconcile",
         });
+      } else if (category == "spot" && event == "trivia") {
+        const online = await spottrivia.findAll({});
+        res.render("verifier/dashboard", {
+          event: online,
+          name: "Spot Registration",
+          event_name: "Trivia Fiesta",
+        });
+      } else if (category == "online" && event == "trivia") {
+        const online = await onlinetrivia.findAll({});
+        res.render("verifier/dashboard", {
+          event: online,
+          name: "Online Registration",
+          event_name: "Trivia Fiesta",
+        });
       } else if (category == undefined && event == undefined) {
         const spot = await spotCodex.findAll({});
         res.render("verifier/dashboard", {
@@ -306,22 +324,21 @@ router.get("/dashboard", async (req, res) => {
         });
       }
     } else {
-      res.clearCookie("admin");
-      res.redirect("/admin/login");
+      res.clearCookie("verifier");
+      res.redirect("/verifier/login");
     }
   } else {
     res.redirect("/admin/login");
   }
 });
 
-router.get('/registration',(req,res)=>{
-  if(req.cookies.verifier){
-    res.redirect('/events')
-  }else{
-    res.redirect('/verifier/login')
+router.get("/registration", (req, res) => {
+  if (req.cookies.verifier) {
+    res.redirect("/events");
+  } else {
+    res.redirect("/verifier/login");
   }
-})
-
+});
 
 router.get("/logout", (req, res) => {
   res.clearCookie("verifier");

@@ -69,7 +69,7 @@ router.get("/",function (req, res, next) {
 router.get("/:event/registration", async(req, res) => {
   const admin=await adminModel.findOne({});
 
-  res.render("registration",{online:admin.dataValues.online});
+  res.render("registration",{online:admin?.dataValues?.online});
 });
 
 router.get("/:event/online", (req, res) => {
