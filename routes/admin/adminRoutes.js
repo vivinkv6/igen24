@@ -207,11 +207,11 @@ router.get("/dashboard", async (req, res) => {
     let findAdmin = await adminlogin.findByPk(adminId);
     if (findAdmin) {
       if (online !== undefined) {
-        const updateAdmin=await findAdmin.update({
-          online:online,
-          id:findAdmin.dataValues.id
-        })
-       
+        const updateAdmin = await findAdmin.update({
+          online: online,
+          id: findAdmin.dataValues.id,
+        });
+
         console.log(findAdmin.dataValues.online);
         res.render("admin/dashboard", {
           onlineRegistration: findAdmin.dataValues.online,
@@ -405,9 +405,7 @@ router.get("/dashboard/events", async (req, res) => {
           name: "Online Registration",
           event_name: "Trivia Fiesta",
         });
-      }
-      
-      else if (category == undefined && event == undefined) {
+      } else if (category == undefined && event == undefined) {
         const spot = await spotCodex.findAll({});
         res.render("admin/codex", {
           event: spot,
@@ -567,12 +565,18 @@ router.get("/dashboard/delete", async (req, res) => {
     const findAdmin = await adminlogin.findByPk(id);
 
     if (findAdmin) {
-      const dropTable=await sequelizeConfig.drop().then(()=>{
-        console.log("Drop all the Table");
-        res.redirect('/admin/dashboard');
-      }).catch((err)=>{
-        res.json({err:err.message})
-      })
+      const dropTable = await sequelizeConfig
+        .drop()
+        .then(async () => {
+          console.log("Drop all the Table");
+          (await sequelizeConfig.sync()).authenticate().then(() => {
+            console.log("All Table created Successfully");
+            res.redirect("/");
+          });
+        })
+        .catch((err) => {
+          res.json({ err: err.message });
+        });
     } else {
       res.clearCookie("admin");
       res.redirect("/admin/login");
