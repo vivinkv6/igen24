@@ -1,10 +1,4 @@
-const posters = [
-  {
-    id: 1,
-    name: "band",
-    image: "/images/poster1.jpg",   
-    pdf:""
-  },
+const day1 = [
   {
     id: 2,
     name: "choreography",
@@ -15,6 +9,45 @@ const posters = [
     id: 3,
     name: "cipher",
     image: "/images/poster8.jpg",
+    pdf:""
+  },
+
+
+  {
+    id: 6,
+    name: "itquiz",
+    image: "/images/poster6.jpg",
+    pdf:""
+  },
+
+ 
+  {
+    id: 8,
+    name: "photography",
+    image: "/images/poster9.jpg",
+    pdf:""
+  },
+ 
+  {
+    id: 10,
+    name: "football",
+    image: "/images/poster10.jpg",
+    pdf:""
+  },
+  {
+    id: 11,
+    name: "webcast",
+    image: "/images/poster11.jpg",
+    pdf:""
+  },
+
+];
+
+const day2 = [
+  {
+    id: 1,
+    name: "band",
+    image: "/images/poster1.jpg",   
     pdf:""
   },
   {
@@ -30,40 +63,15 @@ const posters = [
     pdf:""
   },
   {
-    id: 6,
-    name: "itquiz",
-    image: "/images/poster6.jpg",
-    pdf:""
-  },
-  {
     id: 7,
     name: "gaming",
     image: "/images/poster7.jpg",
-    pdf:""
-  },
- 
-  {
-    id: 8,
-    name: "photography",
-    image: "/images/poster9.jpg",
     pdf:""
   },
   {
     id: 9,
     name: "reconcile",
     image: "/images/poster4.jpg",
-    pdf:""
-  },
-  {
-    id: 10,
-    name: "football",
-    image: "/images/poster10.jpg",
-    pdf:""
-  },
-  {
-    id: 11,
-    name: "webcast",
-    image: "/images/poster11.jpg",
     pdf:""
   },
   {
@@ -74,4 +82,5 @@ const posters = [
   },
 ];
 
-module.exports = posters;
+
+module.exports = {day1,day2};

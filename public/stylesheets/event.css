@@ -1,8 +1,16 @@
 @import "./global.css";
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu+Condensed&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Kanit:ital,wght@1,600&display=swap");
 
 body {
   background-color: var(--bg);
+}
+
+.header {
+  font-family: "Kanit", sans-serif;
+  font-size: 50px;
+  color: whitesmoke;
+  text-align: center;
 }
 
 .card-container {
@@ -80,6 +88,9 @@ img {
     height: 40px;
     font-size: 15px;
     width: 40%;
+  }
+  .header{
+    font-size: 35px;
   }
 }
 

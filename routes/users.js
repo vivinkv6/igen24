@@ -1,6 +1,6 @@
 var express = require("express");
 var router = express.Router();
-var posters = require("../constants/posters");
+var {day1,day2} = require("../constants/posters");
 const cloudinaryConfig = require("../config/cloudinary.config");
 
 const multer = require("multer");
@@ -62,7 +62,8 @@ const adminModel = require("../models/users/admin");
 router.get("/",function (req, res, next) {
 
   res.render("event", {
-    posters: posters,
+    day1:day1,
+    day2:day2
   });
 });
 
