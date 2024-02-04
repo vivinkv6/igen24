@@ -56,12 +56,14 @@ app.use(function (err, req, res, next) {
       "Connection to the database has been established successfully."
     );
   
+   
     // sequelizeConfig.drop().then(()=>{
     //   console.log("Delete all table");
     // }).catch((err)=>{
     //   console.log("Error in dropping table: ",err);
     // })
     // Sync the model with the database
+     //create all tables
     sequelizeConfig
       .sync()
       .then(() => {
@@ -70,6 +72,13 @@ app.use(function (err, req, res, next) {
       .catch((error) => {
         console.error("Error creating table:", error);
       });
+
+    //delete all tables
+    // sequelizeConfig.drop().then(()=>{
+    //   console.log("Drop all table");
+    // }).catch((err)=>{
+    //   console.log(err.message);
+    // })
       
 
     console.log("Model synchronized with the database.");

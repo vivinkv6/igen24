@@ -967,7 +967,7 @@ router.post(
       }
     );
 
-    const register = await onlinecipher
+    const register = await onlinechoreography
       .create({
         id: `SC${len + 1}`,
         name: name,

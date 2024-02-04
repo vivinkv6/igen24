@@ -47,6 +47,7 @@ const jwt = require("jsonwebtoken");
 const usernameExtractor = require("../../utils/usernameExtractor");
 const cookieAuth = require("../../utils/auth");
 const registrationAction = require("../../constants/registrationAction");
+const sequelizeConfig = require("../../config/sequelize.config");
 
 router.get("/login", async (req, res) => {
   /* This code block is checking if there is already an existing admin account in the database. */
@@ -550,6 +551,28 @@ router.get("/dashboard/team/details/:id", async (req, res) => {
       } else {
         res.redirect("/admin/dashboard/team");
       }
+    } else {
+      res.clearCookie("admin");
+      res.redirect("/admin/login");
+    }
+  } else {
+    res.redirect("/admin/login");
+  }
+});
+
+//delete all table
+router.get("/dashboard/delete", async (req, res) => {
+  if (req.cookies.admin) {
+    const id = jwt.verify(req.cookies.admin, process.env.JWT_SECRET_TOKEN);
+    const findAdmin = await adminlogin.findByPk(id);
+
+    if (findAdmin) {
+      const dropTable=await sequelizeConfig.drop().then(()=>{
+        console.log("Drop all the Table");
+        res.redirect('/admin/dashboard');
+      }).catch((err)=>{
+        res.json({err:err.message})
+      })
     } else {
       res.clearCookie("admin");
       res.redirect("/admin/login");
