@@ -3,7 +3,7 @@ const day1 = [
     id: 2,
     name: "choreography",
     image: "/images/poster5.jpg",
-    pdf:""
+    pdf:"/images/guideline2.jpg"
   },
   {
     id: 3,
@@ -32,7 +32,7 @@ const day1 = [
     id: 10,
     name: "football",
     image: "/images/poster10.jpg",
-    pdf:""
+    pdf:"/images/guideline3.jpg"
   },
   {
     id: 11,
@@ -48,7 +48,7 @@ const day2 = [
     id: 1,
     name: "band",
     image: "/images/poster1.jpg",   
-    pdf:""
+    pdf:"/images/guideline1.jpg"
   },
   {
     id: 4,
