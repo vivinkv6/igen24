@@ -9,7 +9,7 @@ const day1 = [
     id: 3,
     name: "cipher",
     image: "/images/poster8.jpg",
-    pdf:""
+    pdf:"/images/guideline6.jpg"
   },
 
 
@@ -17,7 +17,7 @@ const day1 = [
     id: 6,
     name: "itquiz",
     image: "/images/poster6.jpg",
-    pdf:""
+    pdf:"/images/guideline5.jpg"
   },
 
  
@@ -66,13 +66,13 @@ const day2 = [
     id: 7,
     name: "gaming",
     image: "/images/poster7.jpg",
-    pdf:""
+    pdf:"/images/guideline8.jpg"
   },
   {
     id: 9,
     name: "reconcile",
     image: "/images/poster4.jpg",
-    pdf:""
+    pdf:"/images/guideline7.jpg"
   },
   {
     id: 12,
