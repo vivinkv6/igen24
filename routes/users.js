@@ -194,7 +194,7 @@ router.post(
       `data:image/png;base64,${fileBuffer}`,
       {
         folder: "/payment",
-        public_id: Date.now() + "-" + req.file.originalname,
+        public_id: `CD${len + 1} - ${req.file.originalname}`,
         encoding: "base64",
       }
     );
@@ -289,7 +289,7 @@ router.post(
       `data:image/png;base64,${fileBuffer}`,
       {
         folder: "/payment",
-        public_id: Date.now() + "-" + req.file.originalname,
+        public_id: `SP${len + 1} - ${req.file.originalname}`,
         encoding: "base64",
       }
     );
@@ -383,7 +383,7 @@ router.post(
       `data:image/png;base64,${fileBuffer}`,
       {
         folder: "/payment",
-        public_id: Date.now() + "-" + req.file.originalname,
+        public_id: `KA${len + 1} - ${req.file.originalname}`,
         encoding: "base64",
       }
     );
@@ -477,7 +477,7 @@ router.post(
       `data:image/png;base64,${fileBuffer}`,
       {
         folder: "/payment",
-        public_id: Date.now() + "-" + req.file.originalname,
+        public_id: `MG${len + 1} - ${req.file.originalname}`,
         encoding: "base64",
       }
     );
@@ -570,7 +570,7 @@ router.post(
       `data:image/png;base64,${fileBuffer}`,
       {
         folder: "/payment",
-        public_id: Date.now() + "-" + req.file.originalname,
+        public_id: `WD${len + 1} - ${req.file.originalname}`,
         encoding: "base64",
       }
     );
@@ -667,7 +667,7 @@ router.post(
       `data:image/png;base64,${fileBuffer}`,
       {
         folder: "/payment",
-        public_id: Date.now() + "-" + req.file.originalname,
+        public_id: `IT${len + 1} - ${req.file.originalname}`,
         encoding: "base64",
       }
     );
@@ -764,7 +764,7 @@ router.post(
       `data:image/png;base64,${fileBuffer}`,
       {
         folder: "/payment",
-        public_id: Date.now() + "-" + req.file.originalname,
+        public_id: `TV${len + 1} - ${req.file.originalname}`,
         encoding: "base64",
       }
     );
@@ -860,7 +860,7 @@ router.post(
       `data:image/png;base64,${fileBuffer}`,
       {
         folder: "/payment",
-        public_id: Date.now() + "-" + req.file.originalname,
+        public_id: `CS${len + 1} - ${req.file.originalname}`,
         encoding: "base64",
       }
     );
@@ -955,7 +955,7 @@ router.post(
       `data:image/png;base64,${fileBuffer}`,
       {
         folder: "/payment",
-        public_id: Date.now() + "-" + req.file.originalname,
+        public_id: `SC${len + 1} - ${req.file.originalname}`,
         encoding: "base64",
       }
     );
@@ -1051,7 +1051,7 @@ router.post(
       `data:image/png;base64,${fileBuffer}`,
       {
         folder: "/payment",
-        public_id: Date.now() + "-" + req.file.originalname,
+        public_id: `MB${len + 1} - ${req.file.originalname}`,
         encoding: "base64",
       }
     );
@@ -1148,7 +1148,7 @@ router.post(
       `data:image/png;base64,${fileBuffer}`,
       {
         folder: "/payment",
-        public_id: Date.now() + "-" + req.file.originalname,
+        public_id: `FB${len + 1} - ${req.file.originalname}`,
         encoding: "base64",
       }
     );
@@ -1245,7 +1245,7 @@ router.post(
       `data:image/png;base64,${fileBuffer}`,
       {
         folder: "/payment",
-        public_id: Date.now() + "-" + req.file.originalname,
+        public_id: `CI${len + 1} - ${req.file.originalname}`,
         encoding: "base64",
       }
     );
