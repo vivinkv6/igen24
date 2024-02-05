@@ -60,7 +60,7 @@ const day2 = [
     id: 5,
     name: "crimeinvestigation",
     image: "/images/poster3.jpg",
-    pdf:""
+    pdf:"/images/guideline4.jpg"
   },
   {
     id: 7,
