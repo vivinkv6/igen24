@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Events</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/stylesheets/contact.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="row card-container mt-5" style="margin-bottom: 100px">
+        <span class="header mb-5" data-aos="fade-right">CONTACT</span>
+
+        <% for( let i = 0; i < contact.length; i++ ) { %>
+
+        <div
+          class="col-md-6 col-lg-4 card-item"
+          data-aos="flip-right"
+          data-aos-duration="500"
+        >
+          <center>
+            <div class="img">
+              <span class="name"> <%= contact[i].name %> </span>
+              <span class="role"> <%= contact[i].role %></span>
+
+              <div
+                style="
+                  display: flex;
+                  justify-content: center;
+                  gap: 0.5rem;
+                  align-items: center;
+                "
+              >
+                <a
+                  href="tel:+<%= contact[i].call %>"
+                  class="btn btn-outline-success text-light mt-3"
+                  style="
+                    width: 30%;
+                    height: 38px;
+                    background-color: black;
+                    border: 2px solid rgb(167, 237, 17);
+                  "
+                  >Contact</a
+                >
+              </div>
+            </div>
+          </center>
+        </div>
+
+        <% } %>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+      integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+      integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+  </body>
+</html>
