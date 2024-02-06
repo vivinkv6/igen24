@@ -26,133 +26,133 @@
   </head>
   <body>
     <div
-      class="registration-container"
-      data-aos="fade-in"
-      data-aos-duration="2000"
-    >
-      <div class="registration-header">
-        <h1 class="registration-title">Trivia Fiesta Online Registration</h1>
-      </div>
-      <form
-        class="registration-card"
-        id="forms"
-        action="online"
-        method="post"
-        enctype="multipart/form-data"
-      >
-        <!-- <div class="registration-section">
-          <h2 class="registration-section-title">Personal Information</h2>
-        </div> -->
-        <div class="registration-form">
-          <div class="form-group">
-            <label for="name" class="form-label">Participant 1</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              class="form-input"
-              placeholder="John Doe"
-              required
-            />
-          </div>
-          <div class="form-group">
-            <label for="email" class="form-label">Email</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              class="form-input"
-              placeholder="john@example.com"
-              required
-            />
-          </div>
-          <div class="form-group">
-            <label for="community" class="form-label">Department</label>
-            <input
-              type="text"
-              id="department"
-              name="department"
-              class="form-input"
-              required
-            />
-          </div>
-
-          <div class="form-group">
-            <label for="role" class="form-label">College</label>
-            <input
-              type="text"
-              id="college"
-              name="college"
-              class="form-input"
-              placeholder="Enter College Name"
-              required
-            />
-          </div>
-          <div class="form-group">
-            <label for="role" class="form-label">Mobile</label>
-            <input
-              type="text"
-              id="mobile"
-              name="mobile"
-              class="form-input"
-              placeholder="Enter Mobile Number"
-              required
-            />
-          </div>
-
-          <div class="form-group">
-            <label for="place" class="form-label">Online Payment QRCode</label>
-            <a href="/images/qrcode.png" download>
-              <img
-                style="height: 400px; object-fit: contain"
-                src="/images/qrcode.png"
-                class="form-input"
-                required
-              />
-            </a>
-          </div>
-          <div class="form-group">
-            <label for="mobile" class="form-label">Transaction ID</label>
-            <input
-              type="text"
-              id="transaction"
-              name="transaction"
-              class="form-input"
-              placeholder="Enter Transaction ID"
-              required
-            />
-          </div>
-          <div class="form-group">
-            <label for="id-proof" class="form-label"
-              >Upload Payment Screenshot
-            </label>
-            <input
-              type="file"
-              height="300"
-              width="100"
-              id="id-proof"
-              name="payment"
-              class="form-input"
-              required
-            />
-          </div>
-          <div class="form-submit">
-            <button type="submit" class="form-button">Register</button>
-          </div>
-        </div>
-      </form>
+    class="registration-container"
+    data-aos="fade-in"
+    data-aos-duration="2000"
+  >
+    <div class="registration-header">
+      <h1 class="registration-title">Trivia Fiesta Online Registration</h1>
     </div>
-    <div id="formContainer"></div>
-    <center>
-      <button
-        type="button"
-        style="width: 50%"
-        class="btn btn-primary"
-        onclick="addForm()"
-      >
-        Add Participant
-      </button>
-    </center>
+    <form
+      class="registration-card"
+      action="online"
+      method="post"
+      enctype="multipart/form-data"
+    >
+      <!-- <div class="registration-section">
+        <h2 class="registration-section-title">Personal Information</h2>
+      </div> -->
+      <div class="registration-form" id="forms">
+        <div class="form-group">
+          <label for="name" class="form-label">Participant 1</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            class="form-input"
+            placeholder="Enter Name"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="email" class="form-label">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="form-input"
+            placeholder="Enter Email"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="community" class="form-label">Department</label>
+          <input
+            type="text"
+            id="department"
+            name="department"
+            class="form-input"
+            placeholder="Enter Department"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="role" class="form-label">College</label>
+          <input
+            type="text"
+            id="college"
+            name="college"
+            class="form-input"
+            placeholder="Enter College"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="role" class="form-label">Mobile</label>
+          <input
+            type="text"
+            id="mobile"
+            name="mobile"
+            class="form-input"
+            placeholder="Enter Mobile Number"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="place" class="form-label">Online Payment QRCode</label>
+          <a href="/images/qrcode.png" download>
+            <img
+              style="height: 400px; object-fit: contain"
+              src="/images/qrcode.png"
+              class="form-input"
+              required
+            />
+          </a>
+        </div>
+        <div class="form-group">
+          <label for="mobile" class="form-label">Transaction ID</label>
+          <input
+            type="text"
+            id="transaction"
+            name="transaction"
+            class="form-input"
+            placeholder="Enter Transaction ID"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="id-proof" class="form-label"
+            >Upload Payment Screenshot
+          </label>
+          <input
+            type="file"
+            height="300"
+            width="100"
+            id="id-proof"
+            name="payment"
+            class="form-input"
+            required
+          />
+        </div>
+        <div class="form-group" id="formContainer"></div>
+      </div>
+      <center>
+        <button
+          type="button"
+          style="width: 60%"
+          class="btn btn-primary"
+          onclick="addForm()"
+        >
+          Add Participant
+        </button>
+      </center>
+      <div class="form-submit mt-5">
+        <button type="submit" class="form-button">Register</button>
+      </div>
+    </form>
+  </div>
 
     <script>
       var clickCount = 1;

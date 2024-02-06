@@ -35,7 +35,6 @@
       </div>
       <form
         class="registration-card"
-        id="forms"
         action="online"
         method="post"
         enctype="multipart/form-data"
@@ -43,7 +42,7 @@
         <!-- <div class="registration-section">
           <h2 class="registration-section-title">Personal Information</h2>
         </div> -->
-        <div class="registration-form">
+        <div class="registration-form" id="forms">
           <div class="form-group">
             <label for="name" class="form-label">Participant 1</label>
             <input
@@ -51,7 +50,7 @@
               id="name"
               name="name"
               class="form-input"
-              placeholder="John Doe"
+              placeholder="Enter Name"
               required
             />
           </div>
@@ -62,7 +61,7 @@
               id="email"
               name="email"
               class="form-input"
-              placeholder="john@example.com"
+              placeholder="Enter Email"
               required
             />
           </div>
@@ -73,6 +72,7 @@
               id="department"
               name="department"
               class="form-input"
+              placeholder="Enter Department"
               required
             />
           </div>
@@ -84,7 +84,7 @@
               id="college"
               name="college"
               class="form-input"
-              placeholder="Enter College Name"
+              placeholder="Enter College"
               required
             />
           </div>
@@ -136,23 +136,23 @@
               required
             />
           </div>
-          <div class="form-submit">
-            <button type="submit" class="form-button">Register</button>
-          </div>
+          <div class="form-group" id="formContainer"></div>
+        </div>
+        <center>
+          <button
+            type="button"
+            style="width: 60%"
+            class="btn btn-primary"
+            onclick="addForm()"
+          >
+            Add Participant
+          </button>
+        </center>
+        <div class="form-submit mt-5">
+          <button type="submit" class="form-button">Register</button>
         </div>
       </form>
     </div>
-    <div id="formContainer"></div>
-    <center>
-      <button
-        type="button"
-        style="width: 50%"
-        class="btn btn-primary"
-        onclick="addForm()"
-      >
-        Add Participant
-      </button>
-    </center>
 
     <script>
       var clickCount = 1;
