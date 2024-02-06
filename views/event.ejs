@@ -15,26 +15,46 @@
   </head>
   <body>
     <div class="container">
-      <div class="row card-container mt-5 " style="margin-bottom: 100px;">
-
-        <span class="header mb-5" data-aos="fade-right" >February 8</span>
+      <div class="row card-container mt-5" style="margin-bottom: 100px">
+        <span class="header mb-5" data-aos="fade-right">February 8</span>
 
         <% for( let i = 0; i < day1.length; i++ ) { %>
 
-        <div
-          class="col-md-6 col-lg-4 card-item"
-          data-aos="fade-in"
-          data-aos-duration="1000"
-        > 
+        <div class="col-md-6 col-lg-4 card-item" data-aos="fade-in"
+        data-aos-duration="1000"
+        >
           <center>
             <a href="<%= day1[i].pdf %>">
               <img src="<%= day1[i].image %>" class="rounded" alt="" />
             </a>
             <br />
-            <div style="display: flex;justify-content: center;gap: 0.5rem;align-items: center;">
-            <a href="<%= day1[i].pdf %>" data-aos="zoom-in" class="btn btn-outline-success text-light mt-3 " style="width: 25%; height: 38px; background-color: black;border: 2px solid rgb(167, 237, 17);">View</a>
-            <a href="/events/<%= day1[i].name %>/registration" data-aos="zoom-in" class="btn primary mt-3">Register Now</a>
-          </div>
+            <div
+              style="
+                display: flex;
+                justify-content: center;
+                gap: 0.5rem;
+                align-items: center;
+              "
+            >
+              <a
+                href="<%= day1[i].pdf %>"
+                data-aos="zoom-in"
+                class="btn btn-outline-success text-light mt-3"
+                style="
+                  width: 25%;
+                  height: 38px;
+                  background-color: black;
+                  border: 2px solid rgb(167, 237, 17);
+                "
+                >View</a
+              >
+              <a
+                href="/events/<%= day1[i].name %>/registration"
+                data-aos="zoom-in"
+                class="btn primary mt-3"
+                >Register Now</a
+              >
+            </div>
           </center>
         </div>
 
@@ -63,29 +83,49 @@
 
         <% } %>
 
-
         <span class="header mt-5 mb-5" data-aos="fade-right">February 9</span>
 
         <% for( let i = 0; i < day2.length; i++ ) { %>
 
-          <div
-            class="col-md-6 col-lg-4 card-item"
-            data-aos="fade-in"
-            data-aos-duration="1000"
-          >
-            <center>
-              <a href="<%= day2[i].pdf %>">
-                <img src="<%= day2[i].image %>" class="rounded" alt="" />
-              </a>
-              <br />
-              <div style="display: flex;justify-content: center;gap: 0.5rem;align-items: center;">
-              <a href="<%= day2[i].pdf %>" data-aos="zoom-in" class="btn btn-outline-success text-light mt-3 " style="width: 25%; height: 38px; background-color: black;border: 2px solid rgb(167, 237, 17);">View</a>
-              <a href="/events/<%= day2[i].name %>/registration" data-aos="zoom-in" class="btn primary mt-3">Register Now</a>
+        <div class="col-md-6 col-lg-4 card-item" data-aos="fade-in"
+        data-aos-duration="1000"
+        >
+          <center>
+            <a href="<%= day2[i].pdf %>">
+              <img src="<%= day2[i].image %>" class="rounded" alt="" />
+            </a>
+            <br />
+            <div
+              style="
+                display: flex;
+                justify-content: center;
+                gap: 0.5rem;
+                align-items: center;
+              "
+            >
+              <a
+                href="<%= day2[i].pdf %>"
+                data-aos="zoom-in"
+                class="btn btn-outline-success text-light mt-3"
+                style="
+                  width: 25%;
+                  height: 38px;
+                  background-color: black;
+                  border: 2px solid rgb(167, 237, 17);
+                "
+                >View</a
+              >
+              <a
+                href="/events/<%= day2[i].name %>/registration"
+                data-aos="zoom-in"
+                class="btn primary mt-3"
+                >Register Now</a
+              >
             </div>
-            </center>
-          </div>
-  
-          <!-- <div
+          </center>
+        </div>
+
+        <!-- <div
             class="col-md-6 col-lg-4 card-item"
             data-aos="flip-right"
             data-aos-duration="1000"
@@ -107,9 +147,8 @@
               <button class="btn closed-btn mt-3">Register Now</button>
             </center>
           </div> -->
-  
-          <% } %>
 
+        <% } %>
       </div>
     </div>
 
