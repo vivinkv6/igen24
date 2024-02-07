@@ -229,14 +229,14 @@ router.get("/dashboard", async (req, res) => {
         res.render("verifier/dashboard", {
           event: online,
           name: "Online Registration",
-          event_name: "Slippery Football",
+          event_name: "3's Football",
         });
       } else if (category == "spot" && event == "football") {
         const online = await spotfootball.findAll({});
         res.render("verifier/dashboard", {
           event: online,
           name: "Spot Registration",
-          event_name: "Slippery Football",
+          event_name: "3's Football",
         });
       } else if (category == "spot" && event == "photography") {
         const online = await spotphotography.findAll({});

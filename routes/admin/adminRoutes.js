@@ -326,14 +326,14 @@ router.get("/dashboard/events", async (req, res) => {
         res.render("admin/codex", {
           event: online,
           name: "Online Registration",
-          event_name: "Slippery Football",
+          event_name: "3's Football",
         });
       } else if (category == "spot" && event == "football") {
         const online = await spotfootball.findAll({});
         res.render("admin/codex", {
           event: online,
           name: "Spot Registration",
-          event_name: "Slippery Football",
+          event_name: "3's Football",
         });
       } else if (category == "spot" && event == "photography") {
         const online = await spotphotography.findAll({});
