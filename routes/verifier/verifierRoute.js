@@ -332,6 +332,350 @@ router.get("/dashboard", async (req, res) => {
   }
 });
 
+router.get("/dashboard/:id", async (req, res) => {
+  const { id } = req.params;
+
+  if (id.includes("CD")) {
+    const spot = await spotCodex.findByPk(id);
+    const online = await onlineCodex.findByPk(id);
+
+    if (online) {
+      res.render("events/message", {
+        id: online.dataValues.id,
+        mode: "Online",
+        name: online.dataValues.name,
+        college: online.dataValues.college,
+        department: online.dataValues.department,
+        transaction: online.dataValues.transactionid,
+        event: "CODEX",
+        online: true,
+        mobile: online.dataValues.mobile,
+      });
+    } else {
+      res.render("events/message", {
+        id: spot.dataValues.id,
+        mode: "Spot",
+        name: spot.dataValues.name,
+        college: spot.dataValues.college,
+        department: spot.dataValues.department,
+        event: "CODEX",
+        online: false,
+        mobile: spot.dataValues.mobile,
+      });
+    }
+  } else if (id.includes("MB")) {
+    const spot = await spotband.findByPk(id);
+    const online = await onlineband.findByPk(id);
+
+    if (online) {
+      res.render("events/message", {
+        id: online.dataValues.id,
+        mode: "Online",
+        name: online.dataValues.name,
+        college: online.dataValues.college,
+        department: online.dataValues.department,
+        transaction: online.dataValues.transactionid,
+        event: "BAND BATTLE",
+        online: true,
+        mobile: online.dataValues.mobile,
+      });
+    } else {
+      res.render("events/message", {
+        id: spot.dataValues.id,
+        mode: "Spot",
+        name: spot.dataValues.name,
+        college: spot.dataValues.college,
+        department: spot.dataValues.department,
+        event: "BAND BATTLE",
+        online: false,
+        mobile: spot.dataValues.mobile,
+      });
+    }
+  } else if (id.includes("SC")) {
+    const spot = await spotchoreography.findByPk(id);
+    const online = await onlinechoreography.findByPk(id);
+
+    if (online) {
+      res.render("events/message", {
+        id: online.dataValues.id,
+        mode: "Online",
+        name: online.dataValues.name,
+        college: online.dataValues.college,
+        department: online.dataValues.department,
+        transaction: online.dataValues.transactionid,
+        event: "STEP UP",
+        online: true,
+        mobile: online.dataValues.mobile,
+      });
+    } else {
+      res.render("events/message", {
+        id: spot.dataValues.id,
+        mode: "Spot",
+        name: spot.dataValues.name,
+        college: spot.dataValues.college,
+        department: spot.dataValues.department,
+        event: "STEP UP",
+        online: false,
+        mobile: spot.dataValues.mobile,
+      });
+    }
+  } else if (id.includes("CS")) {
+    const spot = await spotCipher.findByPk(id);
+    const online = await onlineCipher.findByPk(id);
+
+    if (online) {
+      res.render("events/message", {
+        id: online.dataValues.id,
+        mode: "Online",
+        name: online.dataValues.name,
+        college: online.dataValues.college,
+        department: online.dataValues.department,
+        transaction: online.dataValues.transactionid,
+        event: "CRACK THE CIPHER",
+        online: true,
+        mobile: online.dataValues.mobile,
+      });
+    } else {
+      res.render("events/message", {
+        id: spot.dataValues.id,
+        mode: "Spot",
+        name: spot.dataValues.name,
+        college: spot.dataValues.college,
+        department: spot.dataValues.department,
+        event: "CRACK THE CIPHER",
+        online: false,
+        mobile: spot.dataValues.mobile,
+      });
+    }
+  } else if (id.includes("CI")) {
+    const spot = await spotcrime.findByPk(id);
+    const online = await onlinecrime.findByPk(id);
+
+    if (online) {
+      res.render("events/message", {
+        id: online.dataValues.id,
+        mode: "Online",
+        name: online.dataValues.name,
+        college: online.dataValues.college,
+        department: online.dataValues.department,
+        transaction: online.dataValues.transactionid,
+        event: "USUAL SUSPECTS",
+        online: true,
+        mobile: online.dataValues.mobile,
+      });
+    } else {
+      res.render("events/message", {
+        id: spot.dataValues.id,
+        mode: "Spot",
+        name: spot.dataValues.name,
+        college: spot.dataValues.college,
+        department: spot.dataValues.department,
+        event: "USUAL SUSPECTS",
+        online: false,
+        mobile: spot.dataValues.mobile,
+      });
+    }
+  } else if (id.includes("FB")) {
+    const spot = await spotfootball.findByPk(id);
+    const online = await onlinefootball.findByPk(id);
+
+    if (online) {
+      res.render("events/message", {
+        id: online.dataValues.id,
+        mode: "Online",
+        name: online.dataValues.name,
+        college: online.dataValues.college,
+        department: online.dataValues.department,
+        transaction: online.dataValues.transactionid,
+        event: "SIUU.",
+        online: true,
+        mobile: online.dataValues.mobile,
+      });
+    } else {
+      res.render("events/message", {
+        id: data.dataValues.id,
+        mode: "Spot",
+        name: spot.dataValues.name,
+        college: spot.dataValues.college,
+        department: spot.dataValues.department,
+        event: "SIUU.",
+        online: false,
+        mobile: spot.dataValues.mobile,
+      });
+    }
+  } else if (id.includes("MG")) {
+    const spot = await spotgaming.findByPk(id);
+    const online = await onlinegaming.findByPk(id);
+
+    if (online) {
+      res.render("events/message", {
+        id: online.dataValues.id,
+        mode: "Online",
+        name: online.dataValues.name,
+        college: online.dataValues.college,
+        department: online.dataValues.department,
+        transaction: online.dataValues.transactionid,
+        event: "THUMB WAR",
+        online: true,
+        mobile: online.dataValues.mobile,
+      });
+    } else {
+      res.render("events/message", {
+        id: spot.dataValues.id,
+        mode: "Spot",
+        name: spot.dataValues.name,
+        college: spot.dataValues.college,
+        department: spot.dataValues.department,
+        event: "THUMB WAR",
+        online: false,
+        mobile: spot.dataValues.mobile,
+      });
+    }
+  } else if (id.includes("IT")) {
+    const spot = await spotquiz.findByPk(id);
+    const online = await onlinequiz.findByPk(id);
+
+    if (online) {
+      res.render("events/message", {
+        id: online.dataValues.id,
+        mode: "Online",
+        name: online.dataValues.name,
+        college: online.dataValues.college,
+        department: online.dataValues.department,
+        transaction: online.dataValues.transactionid,
+        event: "BUZZ",
+        online: true,
+        mobile: online.dataValues.mobile,
+      });
+    } else {
+      res.render("events/message", {
+        id: spot.dataValues.id,
+        mode: "Spot",
+        name: spot.dataValues.name,
+        college: spot.dataValues.college,
+        department: spot.dataValues.department,
+        event: "BUZZ",
+        online: false,
+        mobile: spot.dataValues.mobile,
+      });
+    }
+  } else if (id.includes("SP")) {
+    const spot = await spotphotography.findByPk(id);
+    const online = await onlinephotography.findByPk(id);
+
+    if (online) {
+      res.render("events/message", {
+        id: online.dataValues.id,
+        mode: "Online",
+        name: online.dataValues.name,
+        college: online.dataValues.college,
+        department: online.dataValues.department,
+        transaction: online.dataValues.transactionid,
+        event: "CLICK",
+        online: true,
+        mobile: online.dataValues.mobile,
+      });
+    } else {
+      res.render("events/message", {
+        id: spot.dataValues.id,
+        mode: "Spot",
+        name: spot.dataValues.name,
+        college: spot.dataValues.college,
+        department: spot.dataValues.department,
+        event: "CLICK",
+        online: false,
+        mobile: spot.dataValues.mobile,
+      });
+    }
+  } else if (id.includes("KA")) {
+    const spot = await spotreconcile.findByPk(id);
+    const online = await onlinereconcile.findByPk(id);
+
+    if (online) {
+      res.render("events/message", {
+        id: online.dataValues.id,
+        mode: "Online",
+        name: online.dataValues.name,
+        college: online.dataValues.college,
+        department: online.dataValues.department,
+        transaction: online.dataValues.transactionid,
+        event: "RECONCILE",
+        online: true,
+        mobile: online.dataValues.mobile,
+      });
+    } else {
+      res.render("events/message", {
+        id: spot.dataValues.id,
+        mode: "Spot",
+        name: spot.dataValues.name,
+        college: spot.dataValues.college,
+        department: spot.dataValues.department,
+        event: "RECONCILE",
+        online: false,
+        mobile: spot.dataValues.mobile,
+      });
+    }
+  } else if (id.includes("TV")) {
+    const spot = await spottrivia.findByPk(id);
+    const online = await onlinetrivia.findByPk(id);
+
+    if (online) {
+      res.render("events/message", {
+        id: online.dataValues.id,
+        mode: "Online",
+        name: online.dataValues.name,
+        college: online.dataValues.college,
+        department: online.dataValues.department,
+        transaction: online.dataValues.transactionid,
+        event: "TRIVIA FIESTA",
+        online: true,
+        mobile: online.dataValues.mobile,
+      });
+    } else {
+      res.render("events/message", {
+        id: spot.dataValues.id,
+        mode: "Spot",
+        name: spot.dataValues.name,
+        college: spot.dataValues.college,
+        department: spot.dataValues.department,
+        event: "TRIVIA FIESTA",
+        online: false,
+        mobile: spot.dataValues.mobile,
+      });
+    }
+  } else if (id.includes("WD")) {
+    const spot = await spotWeb.findByPk(id);
+    const online = await onlineWeb.findByPk(id);
+
+    if (online) {
+      res.render("events/message", {
+        id: online.dataValues.id,
+        mode: "Online",
+        name: online.dataValues.name,
+        college: online.dataValues.college,
+        department: online.dataValues.department,
+        transaction: online.dataValues.transactionid,
+        event: "WEBCAST",
+        online: true,
+        mobile: online.dataValues.mobile,
+      });
+    } else {
+      res.render("events/message", {
+        id: spot.dataValues.id,
+        mode: "Spot",
+        name: spot.dataValues.name,
+        college: spot.dataValues.college,
+        department: spot.dataValues.department,
+        event: "WEBCAST",
+        online: false,
+        mobile: spot.dataValues.mobile,
+      });
+    }
+  } else {
+    res.json({ err: "Not Found" });
+  }
+});
+
 router.get("/registration", (req, res) => {
   if (req.cookies.verifier) {
     res.redirect("/events");

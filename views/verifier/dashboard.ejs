@@ -86,6 +86,7 @@
                 <% if(event[0].dataValues.transactionid){ %>
                 <th class="text-dark">TransactionID</th>
                 <th class="text-dark">Payment</th>
+                <th>Details</th>
                 <% } %>
               </tr>
             </thead>
@@ -104,7 +105,9 @@
                 <% if(event[i].dataValues.transactionid){ %>
                 <td><%= event[i].dataValues.transactionid %></td>
                 <td><a href="<%= event[i].dataValues.payment %>" target="_blank"><img src="<%= event[i].dataValues.payment %>" height="300" width="200" alt=""></a></td>
+              
                 <% } %>
+                <td><a href="/verifier/dashboard/<%=  event[i].dataValues.id  %>" class="btn btn-success">View</a></td>
               </tr>
               <% } %>
 
