@@ -493,7 +493,7 @@ router.get("/dashboard/:id", async (req, res) => {
       });
     } else {
       res.render("events/message", {
-        id: data.dataValues.id,
+        id: spot.dataValues.id,
         mode: "Spot",
         name: spot.dataValues.name,
         college: spot.dataValues.college,
