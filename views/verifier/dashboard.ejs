@@ -44,22 +44,22 @@
             <form action="dashboard" method="get" >
               <div class="filter-container" >
               <select name="event" id="">
-                <option value="codex">Codex</option>
-                <option value="webcast">Webcast</option>
-                <option value="photography">Photography</option>
-                <option value="choreography">Choreography</option>
-                <option value="crime">Crime Investigation</option>
-                <option value="football">Football</option>
-                <option value="gaming">Video Gaming</option>
-                <option value="itquiz">IT Quiz</option>
-                <option value="cipher">Crack The Cipher</option>
-                <option value="reconcile">Reconcile</option>
-                <option value="band">Band</option>
-                <option value="trivia">Trivia Fiesta</option>
+                <option value="codex" <%=event_name==='Codex' ? 'selected' : '' %>>Codex</option>
+                <option value="webcast" <%=event_name==='Webcast' ? 'selected' : '' %>>Webcast</option>
+                <option value="photography" <%=event_name==='Spot Photography' ? 'selected' : '' %>>Photography</option>
+                <option value="choreography" <%=event_name==='Choreography' ? 'selected' : '' %>>Choreography</option>
+                <option value="crime" <%=event_name==='Crime Investigation' ? 'selected' : '' %>>Crime Investigation</option>
+                <option value="football" <%=event_name==="3's Football" ? 'selected' : '' %>>Football</option>
+                <option value="gaming" <%=event_name==='Video Gaming' ? 'selected' : '' %>>Video Gaming</option>
+                <option value="itquiz" <%=event_name==='IT Quiz' ? 'selected' : '' %>>IT Quiz</option>
+                <option value="cipher" <%=event_name==='Crack The Cipher' ? 'selected' : '' %>>Crack The Cipher</option>
+                <option value="reconcile" <%=event_name==='Reconcile' ? 'selected' : '' %>>Reconcile</option>
+                <option value="band" <%=event_name==='Music Band' ? 'selected' : '' %>>Band</option>
+                <option value="trivia" <%=event_name==='Trivia Fiesta' ? 'selected' : '' %>>Trivia Fiesta</option>
               </select>
               <select name="category" id="">
-                <option value="spot">Spot Registration</option>
-                <option value="online">Online Registration</option>
+                <option value="spot" <%=name==='Spot Registration' ? 'selected' : '' %>>Spot Registration</option>
+                <option value="online" <%=name==='Online Registration' ? 'selected' : '' %>>Online Registration</option>
               </select>
               
               <button class="btn btn-primary filter-btn">Filter</button>

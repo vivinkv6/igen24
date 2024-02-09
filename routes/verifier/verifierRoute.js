@@ -285,7 +285,7 @@ router.get("/dashboard", async (req, res) => {
         res.render("verifier/dashboard", {
           event: online,
           name: "Spot Registration",
-          event_name: "Reconicle",
+          event_name: "Reconcile",
         });
       } else if (category == "online" && event == "reconcile") {
         const online = await onlinereconcile.findAll({});
